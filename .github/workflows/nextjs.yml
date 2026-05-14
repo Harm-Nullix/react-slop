@@ -26,8 +26,44 @@ jobs:
           node-version: "20"
           cache: "pnpm"
 
+        # --- AUTO-INSTALLER ---
+      - name: Auto-sync missing dependencies
+        id: sync
+        run: |
+          npx depcheck --json > depcheck-report.json || true
+          
+          node -e "
+            const fs = require('fs');
+            const { execSync } = require('child_process');
+            
+            const report = JSON.parse(fs.readFileSync('./depcheck-report.json', 'utf8'));
+            const pkgJson = JSON.parse(fs.readFileSync('./package.json', 'utf8'));
+            const missing = Object.keys(report.missing || {});
+            
+            if (missing.length > 0) {
+              missing.forEach(pkg => {
+                try {
+                  const version = execSync('pnpm info ' + pkg + ' version').toString().trim();
+                  pkgJson.dependencies[pkg] = '^' + version;
+                  console.log('Toegevoegd: ' + pkg + '@^' + version);
+                } catch (e) {
+                  pkgJson.dependencies[pkg] = 'latest';
+                }
+              });
+              fs.writeFileSync('./package.json', JSON.stringify(pkgJson, null, 2));
+              console.log('SYNC_COMPLETE=true');
+            }
+          "
+
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
+
+      - name: Commit changes to branch
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: auto-sync dependencies [skip ci]"
+          file_pattern: 'package.json'
+          skip_dirty_check: false
 
       - name: Build and Update Branch Registry
         run: |
