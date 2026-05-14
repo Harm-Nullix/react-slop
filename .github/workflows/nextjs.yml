@@ -41,8 +41,8 @@ jobs:
 
           # Try to get the existing branch list from the live site
           # We download the existing branches.json if it exists
-          curl -s https://harm-nullix.github.io/${{ github.event.repository.name }}/branches.json > branches.json || echo "[]" > branches.json
-
+          curl -fsSL https://harm-nullix.github.io/${{ github.event.repository.name }}/branches.json > branches.json || echo "[]" > branches.json
+          
           # Use Node to safely update the JSON array without duplicates
           node -e "
             const fs = require('fs');
