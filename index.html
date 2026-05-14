@@ -21,7 +21,7 @@
       .then(branches => {
         const list = document.getElementById('list');
         list.innerHTML = branches.map(b => 
-          `<a class="branch-link" href="./${b}/">📂 ${b} ${b === '2026_05_14_gemini_thinking' ? '<span class="tag">Just Updated</span>' : ''}</a>`
+          `<a class="branch-link" href="./${b}/">📂 ${b} ${b === '2026_05_14_gemini_pro' ? '<span class="tag">Just Updated</span>' : ''}</a>`
         ).join('');
       });
   </script>
