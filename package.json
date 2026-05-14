@@ -53,7 +53,8 @@
     "@radix-ui/react-toggle": "^1.1.10",
     "@radix-ui/react-tooltip": "^1.2.8",
     "next": "^16.2.6",
-    "@vercel/analytics": "^2.0.1"
+    "@vercel/analytics": "^2.0.1",
+    "framer-motion": "^12.38.0"
   },
   "devDependencies": {
     "@types/react": "^19",
