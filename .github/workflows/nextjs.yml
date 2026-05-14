@@ -63,23 +63,20 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
-
+        
       - name: Build and Update Branch Registry
         run: |
           CLEAN_NAME=$(echo ${GITHUB_REF_NAME} | sed 's/\//_/g')
           export VITE_BASE_PATH=/${{ github.event.repository.name }}/$CLEAN_NAME/
           pnpm run build --base=$VITE_BASE_PATH
           
-          # Prepare deployment folder
           mkdir -p root_deploy/$CLEAN_NAME
           cp -r dist/* root_deploy/$CLEAN_NAME/
-
-          # Try to get the existing branch list from the live site
-          # We download the existing branches.json if it exists
-          curl -fsSL https://harm-nullix.github.io/${{ github.event.repository.name }}/branches.json > branches.json || echo "[]" > branches.json
           
-          # Use Node to safely update the JSON array without duplicates
-          // In je "Update Portal Registry" stap:
+          # Download bestaande registry
+          curl -fsSL https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/branches.json > branches.json || echo "[]" > branches.json
+          
+          # Update JSON via Node
           node -e "
             const fs = require('fs');
             let registry;
@@ -87,20 +84,15 @@ jobs:
               const content = fs.readFileSync('branches.json', 'utf8').trim();
               registry = content.startsWith('<') ? [] : JSON.parse(content);
             } catch (e) { registry = []; }
-          
-            // Verwijder oude entry van deze branch als die bestaat
             registry = registry.filter(item => item.name !== '$CLEAN_NAME');
-            
-            // Voeg de nieuwe toe met huidige tijd
             registry.push({
               name: '$CLEAN_NAME',
               updatedAt: new Date().toISOString()
             });
-          
             fs.writeFileSync('root_deploy/branches.json', JSON.stringify(registry));
           "
-
-          # Generate the Portal index.html that reads this JSON
+          
+          # Genereer Portal HTML
           cat <<EOF > root_deploy/index.html
           <!DOCTYPE html>
           <html lang="en">
@@ -112,15 +104,12 @@ jobs:
               .card { max-width: 800px; margin: 0 auto; background: white; padding: 32px; border-radius: 16px; box-shadow: 0 10px 15px rgba(0,0,0,0.1); }
               h1 { margin-bottom: 24px; border-bottom: 2px solid #eee; padding-bottom: 10px; }
               h2 { font-size: 1.1rem; margin-top: 20px; color: #4b5563; text-transform: uppercase; letter-spacing: 0.05em; }
-              
               .link { display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; margin: 4px 0; background: #fff; color: #2563eb; text-decoration: none; border-radius: 8px; border: 1px solid #e5e7eb; transition: all 0.15s; }
               .link:hover { border-color: #3b82f6; background: #eff6ff; }
-              
               details { margin: 8px 0; border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden; }
               summary { padding: 12px 16px; background: #f9fafb; cursor: pointer; font-weight: 600; color: #374151; }
               summary:hover { background: #f3f4f6; }
               details .link { border: none; border-top: 1px solid #f3f4f6; margin: 0; border-radius: 0; padding-left: 32px; }
-              
               .latest-tag { background: #dcfce7; color: #166534; font-size: 0.7rem; padding: 2px 8px; border-radius: 99px; margin-left: 10px; }
               .time { font-size: 0.8rem; color: #9ca3af; }
             </style>
@@ -131,56 +120,40 @@ jobs:
               <div id="flat-list"></div>
               <div id="nested-list"></div>
             </div>
-          
             <script>
               fetch('./branches.json').then(r => r.json()).then(data => {
-                // 1. Sorteer op datum (nieuwste eerst)
                 const sortedData = data.sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt));
-                
                 const flatList = document.getElementById('flat-list');
                 const nestedList = document.getElementById('nested-list');
-                
                 const groups = {};
                 const flats = [];
-          
+
                 sortedData.forEach(item => {
                   if (item.name.includes('_')) {
-                    // We gaan ervan uit dat / is vervangen door _ in $CLEAN_NAME
                     const parts = item.name.split('_');
-                    const root = parts;
+                    const root = parts; // Pak het eerste deel als groepsnaam
                     if (!groups[root]) groups[root] = [];
                     groups[root].push(item);
                   } else {
                     flats.push(item);
                   }
                 });
-          
-                // Render Platte branches
+
                 if (flats.length > 0) {
                   flatList.innerHTML = '<h2>Branches</h2>' + flats.map(item => renderLink(item)).join('');
                 }
-          
-                // Render Groepen
+
                 Object.keys(groups).sort().forEach(root => {
-                  const folderHtml = `
-                    <details>
-                      <summary>📁 ${root} (${groups[root].length})</summary>
-                      ${groups[root].map(item => renderLink(item)).join('')}
-                    </details>
-                  `;
+                  const folderHtml = '<details><summary>📁 ' + root + ' (' + groups[root].length + ')</summary>' + 
+                    groups[root].map(item => renderLink(item)).join('') + '</details>';
                   nestedList.innerHTML += folderHtml;
                 });
               });
-          
+
               function renderLink(item) {
-                const isLatest = item.name === '$CLEAN_NAME';
+                const isLatest = item.name === "$CLEAN_NAME";
                 const date = new Date(item.updatedAt).toLocaleDateString();
-                return `
-                  <a class="link" href="./${item.name}/">
-                    <span>${item.name} ${isLatest ? '<span class="latest-tag">LATEST</span>' : ''}</span>
-                    <span class="time">${date}</span>
-                  </a>
-                `;
+                return '<a class="link" href="./' + item.name + '/"><span>' + item.name + (isLatest ? ' <span class="latest-tag">LATEST</span>' : '') + '</span><span class="time">' + date + '</span></a>';
               }
             </script>
           </body>
