@@ -1,24 +1,22 @@
-name: Deploy Branch to Subfolder
+name: Deploy Branch to Persistent Subfolder
 
 on:
   push:
     branches:
-      - '**' # Matches every branch including feature/branch-name
+      - '**'
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write # Crucial for pushing to the gh-pages branch
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
       - name: Install pnpm
-        uses: pnpm/action-setup@v3
+        uses: pnpm/action-setup@v4 # Updated to v4
         with:
           version: 9
 
@@ -29,34 +27,18 @@ jobs:
           cache: "pnpm"
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --no-frozen-lockfile
 
       - name: Build
-        # Extract branch name and use it as the base path for Vite/React
-        # We replace slashes with underscores to avoid folder nesting issues
         run: |
-          BRANCH_NAME=$(echo ${GITHUB_REF_NAME} | sed 's/\//_/g')
-          pnpm run build -- --base=/${{ github.event.repository.name }}/$BRANCH_NAME/
+          # feature/login -> feature_login
+          CLEAN_NAME=$(echo ${GITHUB_REF_NAME} | sed 's/\//_/g')
+          pnpm run build -- --base=/${{ github.event.repository.name }}/$CLEAN_NAME/
 
-      - name: Organize into subfolder
-        run: |
-          BRANCH_NAME=$(echo ${GITHUB_REF_NAME} | sed 's/\//_/g')
-          mkdir -p temp_out/$BRANCH_NAME
-          cp -r dist/* temp_out/$BRANCH_NAME/
-          # Optional: add an index.html in the root of temp_out to link to all branches
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+      - name: Deploy to Subfolder
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          path: ./temp_out
-
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+          folder: dist
+          target-folder: ${{ github.ref_name }}
+          branch: gh-pages
+          clean: false # Keeps other branch folders alive
