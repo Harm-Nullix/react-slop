@@ -151,7 +151,7 @@ export default function App() {
                     className="absolute inset-0 rounded-full border border-cyan-500/30"
                     animate={phase === 'holding' ? {
                       scale: [1, 1.5],
-                      opacity:,
+                      opacity: 1,
                       borderWidth: ["2px", "8px"]
                     } : {
                       scale: 1, opacity: 0.5
