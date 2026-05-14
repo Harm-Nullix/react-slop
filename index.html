@@ -56,7 +56,7 @@
     });
 
     function renderLink(item) {
-      const isLatest = item.name === "2026_05_14_gemini_thinking";
+      const isLatest = item.name === "dominion";
       const date = new Date(item.updatedAt).toLocaleDateString();
       return '<a class="link" href="./' + item.name + '/"><span>' + item.name + (isLatest ? ' <span class="latest-tag">LATEST</span>' : '') + '</span><span class="time">' + date + '</span></a>';
     }
