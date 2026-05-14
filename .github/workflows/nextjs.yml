@@ -29,17 +29,66 @@ jobs:
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
 
-      - name: Build
+      - name: Build and Update Branch Registry
         run: |
           CLEAN_NAME=$(echo ${GITHUB_REF_NAME} | sed 's/\//_/g')
-          # We set an environment variable that Vite will read
           export VITE_BASE_PATH=/${{ github.event.repository.name }}/$CLEAN_NAME/
           pnpm run build --base=$VITE_BASE_PATH
+          
+          # Prepare deployment folder
+          mkdir -p root_deploy/$CLEAN_NAME
+          cp -r dist/* root_deploy/$CLEAN_NAME/
 
-      - name: Deploy to Subfolder
+          # Try to get the existing branch list from the live site
+          # We download the existing branches.json if it exists
+          curl -s https://harm-nullix.github.io/${{ github.event.repository.name }}/branches.json > branches.json || echo "[]" > branches.json
+
+          # Use Node to safely update the JSON array without duplicates
+          node -e "
+            const fs = require('fs');
+            let branches = JSON.parse(fs.readFileSync('branches.json', 'utf8'));
+            if (!Array.isArray(branches)) branches = [];
+            if (!branches.includes('$CLEAN_NAME')) branches.push('$CLEAN_NAME');
+            fs.writeFileSync('root_deploy/branches.json', JSON.stringify(branches));
+          "
+
+          # Generate the Portal index.html that reads this JSON
+          cat <<EOF > root_deploy/index.html
+          <!DOCTYPE html>
+          <html>
+          <head>
+            <title>Project Portal</title>
+            <style>
+              body { font-family: system-ui, sans-serif; padding: 40px; background: #f9fafb; color: #111827; }
+              .container { max-width: 600px; margin: 0 auto; background: white; padding: 24px; border-radius: 12px; shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1); }
+              .branch-link { display: block; padding: 12px; margin: 8px 0; background: #f3f4f6; color: #2563eb; text-decoration: none; border-radius: 6px; }
+              .branch-link:hover { background: #e5e7eb; }
+              .tag { font-size: 0.8rem; background: #dcfce7; color: #166534; padding: 2px 8px; border-radius: 99px; margin-left: 8px; }
+            </style>
+          </head>
+          <body>
+            <div class="container">
+              <h1>🚀 Test Deployments</h1>
+              <div id="list">Loading branches...</div>
+            </div>
+            <script>
+              fetch('./branches.json')
+                .then(r => r.json())
+                .then(branches => {
+                  const list = document.getElementById('list');
+                  list.innerHTML = branches.map(b => 
+                    \`<a class="branch-link" href="./\${b}/">📂 \${b} \${b === '$CLEAN_NAME' ? '<span class="tag">Just Updated</span>' : ''}</a>\`
+                  ).join('');
+                });
+            </script>
+          </body>
+          </html>
+          EOF
+
+      - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: dist
-          target-folder: ${{ github.ref_name }}
+          folder: root_deploy
+          target-folder: .
           branch: gh-pages
-          clean: false # Keeps other branch folders alive
+          clean: false
