@@ -1,159 +1,250 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Sun, Moon, Zap, Brain, Coffee, Wind, Info, Globe } from 'lucide-react';
+import { Clock, Zap, RefreshCw, BrainCircuit, Activity } from 'lucide-react';
 
-// --- Types & Translations ---
-type MoodType = 'focus' | 'creative' | 'admin' | 'rest';
-
-const TRANSLATIONS = {
+// --- TRANSLATIONS ---
+const dict = {
   en: {
-    title: "ChronosPulse",
-    subtitle: "Bio-Rhythmic Task Aligner",
-    energyLevel: "Current Energy Level",
-    calculate: "Sync with My Rhythm",
-    suggestion: "Optimal Task Type:",
-    focus: "Deep Work & Logic",
-    creative: "Ideation & Design",
-    admin: "Email & Shallow Tasks",
-    rest: "Recharge & Reflection",
-    desc: "Your biological peak suggests:",
-    locationNote: "Based on local solar time",
+    title: "ChronoSync",
+    subtitle: "Calibrate your internal clock",
+    instruction: "Close your eyes. Press and hold the orb until you feel exactly 10 seconds have passed.",
+    holding: "Focus on the time...",
+    release: "Release when 10s is up",
+    resultTitle: "Calibration Complete",
+    actualTime: "Actual time passed:",
+    ratioTitle: "Distortion Ratio:",
+    ratioDesc: "Your brain is running",
+    faster: "faster than reality.",
+    slower: "slower than reality.",
+    perfect: "in perfect sync with reality.",
+    calcLabel: "Real-world task duration (mins)",
+    calcResult: "To you, this will feel like:",
+    recalibrate: "Recalibrate"
   },
   nl: {
-    title: "ChronosPulse",
-    subtitle: "Bio-Ritmische Taak-Aligner",
-    energyLevel: "Huidig Energieniveau",
-    calculate: "Synchroniseer met Ritme",
-    suggestion: "Optimale Taaksoort:",
-    focus: "Focus & Logica",
-    creative: "Ideeën & Ontwerp",
-    admin: "E-mail & Administratie",
-    rest: "Rust & Reflectie",
-    desc: "Je biologische piek suggereert:",
-    locationNote: "Gebaseerd op lokale zonnetijd",
+    title: "ChronoSync",
+    subtitle: "Kalibreer je interne klok",
+    instruction: "Sluit je ogen. Houd de bol ingedrukt tot je voor je gevoel exact 10 seconden verder bent.",
+    holding: "Focus op de tijd...",
+    release: "Laat los na 10 seconden",
+    resultTitle: "Kalibratie Voltooid",
+    actualTime: "Echt verstreken tijd:",
+    ratioTitle: "Vervormingsratio:",
+    ratioDesc: "Jouw brein loopt",
+    faster: "sneller dan de realiteit.",
+    slower: "langzamer dan de realiteit.",
+    perfect: "perfect synchroon met de realiteit.",
+    calcLabel: "Echte duur van een taak (minuten)",
+    calcResult: "Voor jou voelt dit straks als:",
+    recalibrate: "Opnieuw Kalibreren"
   }
 };
 
-// --- Main Component ---
-export default function ChronosPulse() {
-  const [energy, setEnergy] = useState(50);
-  const [result, setResult] = useState<MoodType | null>(null);
-  const [lang] = useState<'en' | 'nl'>(navigator.language.startsWith('nl') ? 'nl' : 'en');
-  const t = TRANSLATIONS[lang];
+type Language = 'en' | 'nl';
+type Phase = 'idle' | 'holding' | 'result';
 
-  const currentTime = new Date().getHours();
+export default function App() {
+  const [lang, setLang] = useState<Language>('en');
+  const [phase, setPhase] = useState<Phase>('idle');
+  const [startTime, setStartTime] = useState<number | null>(null);
+  const [elapsed, setElapsed] = useState<number>(0);
+  const [taskMinutes, setTaskMinutes] = useState<number>(30);
+  
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
 
-  const calculateOptimalTask = () => {
-    // Logica gebaseerd op circadiaanse pieken (kort door de bocht voor 1% niche)
-    // Ochtend (7-11): Focus | Middag (11-15): Admin | Laat-middag (15-18): Creatief | Avond: Rust
-    let task: MoodType = 'rest';
-    
-    if (currentTime >= 7 && currentTime < 11) task = energy > 40 ? 'focus' : 'admin';
-    else if (currentTime >= 11 && currentTime < 15) task = 'admin';
-    else if (currentTime >= 15 && currentTime < 19) task = energy > 60 ? 'creative' : 'rest';
-    else task = 'rest';
+  // Auto-detect browser language
+  useEffect(() => {
+    const browserLang = navigator.language.toLowerCase();
+    if (browserLang.includes('nl')) setLang('nl');
+  }, []);
 
-    setResult(task);
+  const t = dict[lang];
+  const TARGET_SECONDS = 10;
+  
+  // Ratio calculation: If you held for 8s thinking it was 10s, your clock is FAST (ratio 1.25).
+  // A 60 min task will feel like 75 mins to you.
+  const ratio = elapsed > 0 ? TARGET_SECONDS / elapsed : 1;
+  const perceivedTaskTime = taskMinutes * ratio;
+
+  const handlePointerDown = (e: React.PointerEvent) => {
+    if (phase !== 'idle') return;
+    e.preventDefault(); // Prevent text selection/scrolling on mobile
+    setPhase('holding');
+    setStartTime(Date.now());
   };
 
-  const getIcon = (type: MoodType) => {
-    switch (type) {
-      case 'focus': return <Brain className="w-12 h-12 text-blue-400" />;
-      case 'creative': return <Zap className="w-12 h-12 text-purple-400" />;
-      case 'admin': return <Coffee className="w-12 h-12 text-amber-400" />;
-      case 'rest': return <Wind className="w-12 h-12 text-emerald-400" />;
-    }
+  const handlePointerUp = (e: React.PointerEvent) => {
+    if (phase !== 'holding' || !startTime) return;
+    e.preventDefault();
+    const endTime = Date.now();
+    const duration = (endTime - startTime) / 1000;
+    setElapsed(duration);
+    setPhase('result');
+    setStartTime(null);
   };
+
+  // Cleanup
+  useEffect(() => {
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current);
+    };
+  }, []);
 
   return (
-    <div className="min-h-screen bg-[#0f1115] text-gray-100 flex items-center justify-center p-4 font-sans selection:bg-purple-500/30">
-      {/* Background Glow */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-[10%] -left-[10%] w-[40%] h-[40%] bg-purple-900/20 blur-[120px] rounded-full" />
-        <div className="absolute -bottom-[10%] -right-[10%] w-[40%] h-[40%] bg-blue-900/20 blur-[120px] rounded-full" />
-      </div>
+    <div className="min-h-screen bg-[#0A0A0B] text-slate-200 font-sans flex items-center justify-center p-4 selection:bg-cyan-500/30 overflow-hidden">
+      
+      {/* Futuristic Background Glows */}
+      <div className="fixed top-[-20%] left-[-10%] w-[50vw] h-[50vw] rounded-full bg-cyan-600/10 blur-[120px] pointer-events-none" />
+      <div className="fixed bottom-[-20%] right-[-10%] w-[50vw] h-[50vw] rounded-full bg-indigo-600/10 blur-[120px] pointer-events-none" />
 
       <motion.div 
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="w-full max-w-md z-10"
+        layout
+        className="w-full max-w-md bg-white/[0.03] backdrop-blur-2xl border border-white/10 rounded-[32px] shadow-2xl overflow-hidden relative z-10"
+        transition={{ type: "spring", stiffness: 300, damping: 30 }}
       >
-        {/* Card Container - Material 3 Glassmorphism */}
-        <div className="bg-[#1c1f26]/80 backdrop-blur-xl border border-white/10 rounded-[32px] p-8 shadow-2xl overflow-hidden relative">
-          
-          {/* Header */}
-          <header className="mb-10 text-center">
-            <motion.div 
-              animate={{ rotate: 360 }}
-              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-              className="inline-block mb-4"
-            >
-              <Globe className="w-8 h-8 text-purple-500 opacity-50" />
-            </motion.div>
-            <h1 className="text-3xl font-bold tracking-tight bg-gradient-to-r from-white to-gray-500 bg-clip-text text-transparent">
-              {t.title}
-            </h1>
-            <p className="text-sm text-gray-500 uppercase tracking-widest mt-1">{t.subtitle}</p>
-          </header>
-
-          {/* Input Section */}
-          <div className="space-y-8">
-            <div className="space-y-4">
-              <div className="flex justify-between text-sm font-medium">
-                <span className="text-gray-400">{t.energyLevel}</span>
-                <span className="text-purple-400 font-mono">{energy}%</span>
-              </div>
-              <input 
-                type="range" 
-                value={energy}
-                onChange={(e) => setEnergy(parseInt(e.target.value))}
-                className="w-full h-1.5 bg-gray-800 rounded-lg appearance-none cursor-pointer accent-purple-500 transition-all"
-              />
+        {/* Header */}
+        <motion.div layout className="p-6 pb-2 flex justify-between items-center border-b border-white/5">
+          <div className="flex items-center gap-3">
+            <div className="p-2 bg-cyan-500/10 rounded-xl">
+              <BrainCircuit className="w-6 h-6 text-cyan-400" />
             </div>
-
-            <motion.button
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              onClick={calculateOptimalTask}
-              className="w-full py-4 bg-white text-black font-bold rounded-2xl shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_rgba(255,255,255,0.2)] transition-all flex items-center justify-center gap-2"
-            >
-              <Sun className="w-5 h-5" />
-              {t.calculate}
-            </motion.button>
+            <div>
+              <h1 className="text-xl font-bold tracking-tight text-white">{t.title}</h1>
+              <p className="text-xs text-slate-400 font-medium tracking-wide">{t.subtitle}</p>
+            </div>
           </div>
+          <button 
+            onClick={() => setLang(lang === 'en' ? 'nl' : 'en')}
+            className="text-xs font-bold uppercase tracking-wider bg-white/5 hover:bg-white/10 px-3 py-1.5 rounded-full transition-colors"
+          >
+            {lang}
+          </button>
+        </motion.div>
 
-          {/* Result Area */}
+        <div className="p-8 flex flex-col items-center justify-center min-h-[400px]">
           <AnimatePresence mode="wait">
-            {result && (
-              <motion.div
-                key={result}
-                initial={{ opacity: 0, scale: 0.9, y: 10 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                className="mt-10 pt-10 border-t border-white/5 text-center"
+            
+            {/* IDLE / CALIBRATION PHASE */}
+            {(phase === 'idle' || phase === 'holding') && (
+              <motion.div 
+                key="calibrate"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 1.1, filter: "blur(10px)" }}
+                className="flex flex-col items-center w-full"
               >
-                <div className="flex justify-center mb-4 relative">
-                   <motion.div 
-                    animate={{ scale: [1, 1.1, 1] }}
-                    transition={{ repeat: Infinity, duration: 4 }}
-                    className="absolute inset-0 bg-white/5 blur-2xl rounded-full"
-                   />
-                   {getIcon(result)}
-                </div>
-                <p className="text-gray-500 text-sm mb-1">{t.desc}</p>
-                <h2 className="text-2xl font-semibold text-white tracking-tight">
-                  {t[result]}
-                </h2>
+                <p className="text-center text-sm text-slate-300 mb-12 max-w-[280px] leading-relaxed">
+                  {phase === 'idle' ? t.instruction : t.holding}
+                </p>
+
+                {/* The Orb - Interactive Area */}
+                <motion.div
+                  onPointerDown={handlePointerDown}
+                  onPointerUp={handlePointerUp}
+                  onPointerLeave={handlePointerUp}
+                  className="relative flex items-center justify-center w-48 h-48 cursor-pointer touch-none"
+                  whileHover={phase === 'idle' ? { scale: 1.05 } : {}}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  {/* Outer glowing rings */}
+                  <motion.div 
+                    className="absolute inset-0 rounded-full border border-cyan-500/30"
+                    animate={phase === 'holding' ? {
+                      scale: [1, 1.5],
+                      opacity:,
+                      borderWidth: ["2px", "8px"]
+                    } : {
+                      scale: 1, opacity: 0.5
+                    }}
+                    transition={{ duration: 1.5, repeat: phase === 'holding' ? Infinity : 0, ease: "easeOut" }}
+                  />
+                  
+                  {/* Inner Orb */}
+                  <motion.div 
+                    className={`w-32 h-32 rounded-full flex items-center justify-center shadow-[0_0_40px_rgba(6,182,212,0.3)] transition-colors duration-500 ${phase === 'holding' ? 'bg-cyan-500' : 'bg-slate-800 border border-white/10'}`}
+                    animate={phase === 'holding' ? { scale: [1, 0.9, 1] } : {}}
+                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                  >
+                    <Activity className={`w-10 h-10 ${phase === 'holding' ? 'text-white' : 'text-cyan-400'}`} />
+                  </motion.div>
+                </motion.div>
+
+                <motion.p 
+                  className="mt-12 text-xs text-cyan-400/80 font-mono uppercase tracking-widest"
+                  animate={phase === 'holding' ? { opacity: [0.5, 1, 0.5] } : { opacity: 0 }}
+                  transition={{ duration: 1, repeat: Infinity }}
+                >
+                  {t.release}
+                </motion.p>
               </motion.div>
             )}
+
+            {/* RESULT & CALCULATOR PHASE */}
+            {phase === 'result' && (
+              <motion.div 
+                key="result"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="w-full flex flex-col items-center"
+              >
+                <div className="w-full bg-black/20 rounded-2xl p-5 border border-white/5 mb-6 relative overflow-hidden">
+                  <div className="absolute top-0 left-0 w-1 h-full bg-cyan-500" />
+                  <p className="text-xs text-slate-400 mb-1">{t.actualTime}</p>
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-4xl font-light text-white font-mono">{elapsed.toFixed(2)}</span>
+                    <span className="text-sm text-cyan-500 font-bold uppercase tracking-wider">SEC</span>
+                  </div>
+                </div>
+
+                <div className="w-full mb-8">
+                  <p className="text-sm text-slate-300 font-medium mb-2">{t.ratioTitle} <span className="font-mono text-cyan-400 bg-cyan-400/10 px-2 py-0.5 rounded-md">{ratio.toFixed(2)}x</span></p>
+                  <p className="text-xs text-slate-500 leading-relaxed">
+                    {t.ratioDesc} <strong className="text-slate-200">
+                      {ratio > 1.1 ? t.faster : ratio < 0.9 ? t.slower : t.perfect}
+                    </strong>
+                  </p>
+                </div>
+
+                {/* Calculator M3 Card */}
+                <div className="w-full bg-white/5 rounded-[24px] p-6 shadow-inner border border-white/10 mb-6">
+                  <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">
+                    {t.calcLabel}
+                  </label>
+                  <div className="flex items-center gap-4 mb-6">
+                    <input 
+                      type="range" 
+                      min="5" max="120" step="5"
+                      value={taskMinutes}
+                      onChange={(e) => setTaskMinutes(Number(e.target.value))}
+                      className="flex-1 accent-cyan-500 h-1 bg-slate-700 rounded-full appearance-none cursor-pointer"
+                    />
+                    <span className="text-lg font-mono font-bold text-white w-12 text-right">{taskMinutes}</span>
+                  </div>
+
+                  <div className="pt-4 border-t border-white/10">
+                    <p className="text-xs text-slate-400 mb-2">{t.calcResult}</p>
+                    <div className="flex items-center gap-3">
+                      <Clock className="w-5 h-5 text-indigo-400" />
+                      <span className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-indigo-400 font-mono">
+                        {Math.round(perceivedTaskTime)} min
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  onClick={() => { setPhase('idle'); setElapsed(0); }}
+                  className="w-full py-4 bg-white/5 hover:bg-white/10 border border-white/10 rounded-2xl flex items-center justify-center gap-2 text-sm font-bold text-white transition-all"
+                >
+                  <RefreshCw className="w-4 h-4" />
+                  {t.recalibrate}
+                </motion.button>
+              </motion.div>
+            )}
+
           </AnimatePresence>
-
-          {/* Footer Info */}
-          <div className="mt-8 flex items-center justify-center gap-2 text-[10px] text-gray-600 uppercase tracking-tighter">
-            <Info className="w-3 h-3" />
-            {t.locationNote} • {new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}
-          </div>
-
         </div>
       </motion.div>
     </div>
