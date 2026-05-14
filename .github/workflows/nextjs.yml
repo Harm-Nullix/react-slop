@@ -116,7 +116,7 @@ jobs:
           </head>
           <body>
             <div class="card">
-              <h1>🚀 App Explorer</h1>
+              <h1>App Explorer</h1>
               <div id="flat-list"></div>
               <div id="nested-list"></div>
             </div>
