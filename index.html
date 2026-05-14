@@ -25,7 +25,8 @@
     <div id="nested-list"></div>
   </div>
   <script>
-    fetch('./branches.json').then(r => r.json()).then(data => {
+    const cacheBuster = '?t=' + new Date().getTime();
+    fetch('./branches.json'+cacheBuster).then(r => r.json()).then(data => {
       const sortedData = data.sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt));
       const flatList = document.getElementById('flat-list');
       const nestedList = document.getElementById('nested-list');
@@ -55,7 +56,7 @@
     });
 
     function renderLink(item) {
-      const isLatest = item.name === "2026_05_14_claude";
+      const isLatest = item.name === "main";
       const date = new Date(item.updatedAt).toLocaleDateString();
       return '<a class="link" href="./' + item.name + '/"><span>' + item.name + (isLatest ? ' <span class="latest-tag">LATEST</span>' : '') + '</span><span class="time">' + date + '</span></a>';
     }
