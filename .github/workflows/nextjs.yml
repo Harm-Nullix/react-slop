@@ -7,7 +7,13 @@ on:
 
 permissions:
   contents: write # Crucial for pushing to the gh-pages branch
-
+  
+# Zorgt ervoor dat slechts één build tegelijk naar gh-pages kan schrijven.
+# Andere builds die op hetzelfde moment starten, worden in de wachtrij gezet.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+  
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -57,13 +63,6 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
-
-      - name: Commit changes to branch
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "chore: auto-sync dependencies [skip ci]"
-          file_pattern: 'package.json'
-          skip_dirty_check: false
 
       - name: Build and Update Branch Registry
         run: |
@@ -120,11 +119,13 @@ jobs:
           </body>
           </html>
           EOF
-
-      - name: Deploy
+          
+      - name: Deploy to gh-pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: root_deploy
           target-folder: .
           branch: gh-pages
           clean: false
+          git-config-name: github-actions[bot]
+          git-config-email: github-actions[bot]@users.noreply.github.com
