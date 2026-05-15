@@ -12,7 +12,7 @@ import {
 /**
  * Micro-Chore Tracker
  * Een "Self-Styling" React component.
- * Inclusief Tailwind injectie voor directe werking in lege projecten.
+ * Geoptimaliseerd voor betrouwbare rendering bij de eerste load.
  */
 
 const App = () => {
@@ -24,21 +24,38 @@ const App = () => {
   const [language, setLanguage] = useState('en');
   const [isLoaded, setIsLoaded] = useState(false);
 
-  // Inject Tailwind CSS into the document head if not present
   useEffect(() => {
-    if (!document.getElementById('tailwind-cdn')) {
-      const script = document.createElement('script');
-      script.id = 'tailwind-cdn';
-      script.src = 'https://cdn.tailwindcss.com';
-      document.head.appendChild(script);
-    }
+    // Inject Tailwind CSS betrouwbaar
+    const injectTailwind = () => {
+      if (!document.getElementById('tailwind-cdn')) {
+        const script = document.createElement('script');
+        script.id = 'tailwind-cdn';
+        script.src = 'https://cdn.tailwindcss.com';
+        
+        // Tailwind configuratie om onmiddellijke verwerking te forceren
+        script.onload = () => {
+          window.tailwind.config = {
+            darkMode: 'class',
+            theme: {
+              extend: {
+                colors: {
+                  slate: { 950: '#0f1115' }
+                }
+              }
+            }
+          };
+          setIsLoaded(true);
+        };
+        document.head.appendChild(script);
+      } else {
+        setIsLoaded(true);
+      }
+    };
+
+    injectTailwind();
 
     const browserLang = navigator.language.split('-');
     setLanguage(browserLang === 'nl' ? 'nl' : 'en');
-    
-    // Kleine delay om Tailwind de kans te geven de klassen te parsen
-    const timer = setTimeout(() => setIsLoaded(true), 100);
-    return () => clearTimeout(timer);
   }, []);
 
   const translations = {
@@ -90,10 +107,12 @@ const App = () => {
 
   const completedCount = tasks.filter(t => t.completed).length;
 
+  // Render een basis-layout tijdens het laden om "verspringen" te voorkomen
   if (!isLoaded) {
     return (
-      <div className="min-h-screen bg-[#0f1115] flex items-center justify-center">
-        <div className="w-12 h-12 border-4 border-purple-500/20 border-t-purple-500 rounded-full animate-spin"></div>
+      <div style={{ backgroundColor: '#0f1115', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <div style={{ width: '40px', height: '40px', border: '3px solid rgba(168, 85, 247, 0.2)', borderTopColor: '#a855f7', borderRadius: '50%', animation: 'spin 1s linear infinite' }} />
+        <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
       </div>
     );
   }
@@ -240,7 +259,7 @@ const App = () => {
         @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes slideInRight { from { opacity: 0; transform: translateX(30px); } to { opacity: 1; transform: translateX(0); } }
         
-        body { margin: 0; padding: 0; background-color: #0f1115; }
+        body { margin: 0; padding: 0; background-color: #0f1115; font-family: sans-serif; color: #e2e8f0; }
         * { box-sizing: border-box; }
       `}</style>
     </div>
