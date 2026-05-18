@@ -1,5 +1,5 @@
 {
-  "name": "react-app",
+  "name": "lumephase-circadian-synchronizer",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -62,5 +62,14 @@
     "@vitejs/plugin-react": "^6.0.1",
     "typescript": "5.7.3",
     "vite": "^8.0.12"
-  }
+  },
+  "title": "LumePhase: Circadian Synchronizer",
+  "description": "A high-precision light therapy calculator for shift workers and individuals in extreme latitudes to optimize their circadian phase-shift through calculated exposure windows.",
+  "tags": [
+    "circadian-rhythm",
+    "health-tech",
+    "material-3",
+    "bilingual",
+    "framer-motion"
+  ]
 }
