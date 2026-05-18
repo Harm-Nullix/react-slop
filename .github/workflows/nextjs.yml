@@ -71,43 +71,25 @@ jobs:
         
       - name: Build and Update Branch Registry
         run: |
-          # 1. Haal de titel op uit package.json en zet de veilige slug direct in GITHUB_ENV
-          node << 'EOF'
-          const fs = require('fs');
-          try {
-            const pkg = JSON.parse(fs.readFileSync('./package.json', 'utf8'));
-            const title = pkg.title || pkg.name || 'untitled';
-            const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
-            
-            // Schrijf naar GITHUB_ENV zodat volgende stappen/regels erbij kunnen
-            fs.appendFileSync(process.env.GITHUB_ENV, `PROJECT_SLUG=${slug}\n`);
-            console.log(`Slug succesvol gegenereerd: ${slug}`);
-          } catch (err) {
-            console.error('Fout bij genereren slug:', err);
-            process.exit(1);
-          }
-          EOF
+          # 1. Haal de titel op uit package.json en maak er een URL-veilige slug van
+          PROJECT_SLUG=$(node -e "const pkg = JSON.parse(fs.readFileSync('./package.json', 'utf8')); const title = pkg.title || pkg.name || 'untitled'; console.log(title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, ''));")
           
-          # Haal de variabele direct op uit de GitHub environment voor gebruik in dit run-blok
-          # (Bash heeft een kleine refresh nodig om GITHUB_ENV binnen hetzelfde run-blok te lezen)
-          export PROJECT_SLUG=$(node -e "console.log(process.env.PROJECT_SLUG || '')")
-          
-          # We houden CLEAN_NAME nog wel even voor de map-structuur (uniekheid)
-          CLEAN_NAME=$(echo ${GITHUB_REF_NAME} | sed 's/\//_/g')
-          
-          # Gebruik de SLUG voor het Vite pad
+          # Exporteer de variabelen zodat zowel Vite als de Node-scripts erbij kunnen via process.env
+          export PROJECT_SLUG
           export VITE_BASE_PATH=/${{ github.event.repository.name }}/$PROJECT_SLUG/
+          
+          # Run de build
           pnpm run build --base=$VITE_BASE_PATH
           
-          # Prepare folders
+          # Bereid de mappen voor
           mkdir -p root_deploy/$PROJECT_SLUG
           cp -r dist/* root_deploy/$PROJECT_SLUG/
           
           # Registry updaten (met cache buster)
           curl -fsSL "https://Harm-Nullix.github.io/react-slop/branches.json?$(date +%s)" > branches.json || echo "[]" > branches.json
           
-          # 2. Update branches.json via Node (Geen quotes om EOF zodat Bash de variabelen invult)
-          node << EOF
+          # 2. Update branches.json via Node (Nu VEILIG met 'EOF' omdat we process.env gebruiken)
+          node << 'EOF'
           const fs = require('fs');
           
           let registry;
@@ -120,8 +102,9 @@ jobs:
           
           const pkg = JSON.parse(fs.readFileSync('./package.json', 'utf8'));
           
-          const slug = "$PROJECT_SLUG";
-          const branchName = "$GITHUB_REF_NAME";
+          // Halen we veilig binnen via de environment
+          const slug = process.env.PROJECT_SLUG;
+          const branchName = process.env.GITHUB_REF_NAME;
           
           registry = registry.map(item => {
               return {
@@ -148,8 +131,8 @@ jobs:
           fs.writeFileSync('root_deploy/branches.json', JSON.stringify(registry, null, 2));
           EOF
           
-          # 3. Genereer Portal HTML
-          cat <<EOF > root_deploy/index.html
+          # 3. Genereer Portal HTML (Nu VEILIG met 'EOF'. Backslashes bij ${} zijn niet meer nodig!)
+          cat << 'EOF' > root_deploy/index.html
           <!DOCTYPE html>
           <html lang="en">
           <head>
@@ -228,7 +211,7 @@ jobs:
               const allTags = [...new Set(projects.flatMap(p => p.tags || []))].sort();
               const container = document.getElementById('autocomplete-tags');
               container.innerHTML = allTags.map(tag => `
-                <span class="tag \${tag === activeTag ? 'active' : ''}" onclick="filterTag('\${tag}')">\${tag}</span>
+                <span class="tag ${tag === activeTag ? 'active' : ''}" onclick="filterTag('${tag}')">${tag}</span>
               `).join('');
             }
           
@@ -268,23 +251,23 @@ jobs:
                     day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' 
                 });
             
-                return \`
+                return `
                   <div class="card">
-                    <a href="./\${slug}/" class="card-content">
+                    <a href="./${slug}/" class="card-content">
                       <div class="title-row">
-                        <span class="title">\${title}</span>
+                        <span class="title">${title}</span>
                       </div>
-                      <p class="description">\${description}</p>
+                      <p class="description">${description}</p>
                       <div class="tag-list">
-                        \${tags.map(t => \`<span class="tag">\${t}</span>\`).join('')}
+                        ${tags.map(t => `<span class="tag">${t}</span>`).join('')}
                       </div>
-                      <span class="meta">Updated: \${dateStr}</span>
+                      <span class="meta">Updated: ${dateStr}</span>
                     </a>
-                    <button class="pin-btn \${isPinned ? 'active' : ''}" onclick="togglePin('\${slug}', event)">
-                      \${isPinned ? '★' : '☆'}
+                    <button class="pin-btn ${isPinned ? 'active' : ''}" onclick="togglePin('${slug}', event)">
+                      ${isPinned ? '★' : '☆'}
                     </button>
                   </div>
-                \`;
+                `;
             }
           
             searchInput.addEventListener('input', render);
