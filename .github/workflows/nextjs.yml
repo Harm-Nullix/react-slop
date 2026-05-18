@@ -71,13 +71,25 @@ jobs:
         
       - name: Build and Update Branch Registry
         run: |
-          # 1. Haal de titel op uit package.json en maak er een URL-veilige slug van
-          PROJECT_SLUG=$(node -e "
-            const fs = require('fs');
+          # 1. Haal de titel op uit package.json en zet de veilige slug direct in GITHUB_ENV
+          node << 'EOF'
+          const fs = require('fs');
+          try {
             const pkg = JSON.parse(fs.readFileSync('./package.json', 'utf8'));
             const title = pkg.title || pkg.name || 'untitled';
-            console.log(title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, ''));
-          ")
+            const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+            
+            // Dit zorgt ervoor dat $PROJECT_SLUG beschikbaar is in de rest van dit run-blok
+            fs.appendFileSync(process.env.GITHUB_ENV, `PROJECT_SLUG=${slug}\n`);
+            console.log(`Slug succesvol gegenereerd: ${slug}`);
+          } catch (err) {
+            console.error('Fout bij genereren slug:', err);
+            process.exit(1);
+          }
+          EOF
+          
+          # Laad de zojuist gemaakte variabele direct in voor de huidige Bash-sessie
+          export PROJECT_SLUG=$(node -e "const pkg = JSON.parse(fs.readFileSync('./package.json', 'utf8')); const title = pkg.title || pkg.name || 'untitled'; console.log(title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, ''));")
           
           # We houden CLEAN_NAME nog wel even voor de map-structuur (uniekheid)
           CLEAN_NAME=$(echo ${GITHUB_REF_NAME} | sed 's/\//_/g')
@@ -93,7 +105,7 @@ jobs:
           # Registry updaten (met cache buster)
           curl -fsSL "https://Harm-Nullix.github.io/react-slop/branches.json?$(date +%s)" > branches.json || echo "[]" > branches.json
           
-          # 2. Update branches.json via Node (Geen aanhalingstekens om EOF zodat Bash variabelen invult)
+          # 2. Update branches.json via Node (Geen quotes om EOF zodat Bash de variabelen invult)
           node << EOF
           const fs = require('fs');
           
