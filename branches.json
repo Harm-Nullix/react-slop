@@ -46,5 +46,19 @@
     "description": "",
     "tags": [],
     "updatedAt": "2026-05-18T12:33:56.353Z"
+  },
+  {
+    "name": "gen/2026/05/18/gemini-3-flash-preview/lumephase-circadian-synchronizer",
+    "slug": "lumephase-circadian-synchronizer",
+    "title": "LumePhase: Circadian Synchronizer",
+    "description": "A high-precision light therapy calculator for shift workers and individuals in extreme latitudes to optimize their circadian phase-shift through calculated exposure windows.",
+    "tags": [
+      "circadian-rhythm",
+      "health-tech",
+      "material-3",
+      "bilingual",
+      "framer-motion"
+    ],
+    "updatedAt": "2026-05-18T12:50:57.326Z"
   }
 ]
