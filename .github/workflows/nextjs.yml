@@ -167,7 +167,7 @@ jobs:
             </div>
           
             <div id="pinned-section" class="hidden">
-              <h2 class="section-title">📌 Pinned Projects</h2>
+              <h2 class="section-title">Pinned Projects</h2>
               <div id="pinned-list" class="project-list"></div>
             </div>
           
