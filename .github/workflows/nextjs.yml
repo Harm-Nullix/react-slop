@@ -10,8 +10,8 @@ permissions:
   
 # Zorgt ervoor dat slechts één build tegelijk naar gh-pages kan schrijven.
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: false
+  group: deploy-to-gh-pages  # Vaste string voor de hele repo
+  cancel-in-progress: false   # Belangrijk: zet ze in de wachtrij, niet annuleren!
   
 jobs:
   build-and-deploy:
@@ -94,7 +94,7 @@ jobs:
           cp -r dist/* root_deploy/$PROJECT_SLUG/
           
           # Registry updaten (met cache buster)
-          curl -fsSL "https://Harm-Nullix.github.io/react-slop/branches.json?$(date +%s)" > branches.json || echo "[]" > branches.json
+          curl -fsSL "https://harm-nullix.github.io/react-slop/branches.json?$(date +%s)" > branches.json || echo "[]" > branches.json
           
           # Update branches.json via Node
           node << 'EOF'
