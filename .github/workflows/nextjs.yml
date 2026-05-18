@@ -89,31 +89,44 @@ jobs:
           # Registry updaten
           curl -fsSL "https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/branches.json?$(date +%s)" > branches.json || echo "[]" > branches.json
           
-          node -e "
-            const fs = require('fs');
-            let registry;
-            try {
-              const content = fs.readFileSync('branches.json', 'utf8').trim();
-              registry = content.startsWith('<') ? [] : JSON.parse(content);
-            } catch (e) { registry = []; }
-
-            const pkg = JSON.parse(fs.readFileSync('./package.json', 'utf8'));
-            const slug = '$PROJECT_SLUG';
-            
-            // Verwijder oude entry op basis van de slug OF de branch naam
-            registry = registry.filter(item => item.slug !== slug && item.branch !== '$CLEAN_NAME');
-            
-            registry.push({
-              name: '$CLEAN_NAME',      // De fysieke branch (voor debug)
-              slug: slug,               // De URL naam
-              title: pkg.title || pkg.name || '$CLEAN_NAME',
-              description: pkg.description || '',
-              tags: pkg.tags || [],
-              updatedAt: new Date().toISOString()
-            });
-            
-            fs.writeFileSync('root_deploy/branches.json', JSON.stringify(registry));
-          "
+          node_script = """
+              const fs = require('fs');
+              let registry;
+              try {
+                  const content = fs.readFileSync('branches.json', 'utf8').trim();
+                  registry = content.startsWith('<') ? [] : JSON.parse(content);
+              } catch (e) { registry = []; }
+          
+              const pkg = JSON.parse(fs.readFileSync('./package.json', 'utf8'));
+              const slug = '""" + slug + """';
+          
+              // Update de lijst en zorg dat OUDE items ook fallback velden krijgen
+              registry = registry.map(item => {
+                  return {
+                      name: item.name,
+                      slug: item.slug || item.name, // Fallback naar name als slug mist
+                      title: item.title || item.name, // Fallback naar name
+                      description: item.description || '',
+                      tags: item.tags || [],
+                      updatedAt: item.updatedAt
+                  };
+              });
+          
+              // Verwijder de huidige branch als die er al in stond
+              registry = registry.filter(item => item.slug !== slug);
+          
+              // Voeg de nieuwe toe
+              registry.push({
+                  name: '""" + branch_name + """',
+                  slug: slug,
+                  title: pkg.title || pkg.name || slug,
+                  description: pkg.description || '',
+                  tags: pkg.tags || [],
+                  updatedAt: new Date().toISOString()
+              });
+          
+              fs.writeFileSync('root_deploy/branches.json', JSON.stringify(registry));
+          """
           
           # Genereer Portal HTML
           cat <<EOF > root_deploy/index.html
@@ -240,24 +253,34 @@ jobs:
             }
           
             function createCard(p, isPinned) {
-              const date = new Date(p.updatedAt).toLocaleString('nl-NL', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' });
-              return `
-                <div class="card">
-                  <a href="./${p.slug}/" class="card-content">
-                    <div class="title-row">
-                      <span class="title">${p.title}</span>
-                    </div>
-                    <p class="description">${p.description}</p>
-                    <div class="tag-list">
-                      ${(p.tags || []).map(t => `<span class="tag">${t}</span>`).join('')}
-                    </div>
-                    <span class="meta">Updated: ${date}</span>
-                  </a>
-                  <button class="pin-btn ${isPinned ? 'active' : ''}" onclick="togglePin('${p.slug}', event)">
-                    ${isPinned ? '★' : '☆'}
-                  </button>
-                </div>
-              `;
+                // Valideer velden en gebruik fallback waarden
+                const title = p.title || p.name || 'Untitled Project';
+                const description = p.description || 'No description provided.';
+                const tags = Array.isArray(p.tags) ? p.tags : [];
+                const slug = p.slug || p.name;
+                const updatedAt = p.updatedAt ? new Date(p.updatedAt) : new Date();
+            
+                const dateStr = updatedAt.toLocaleString('nl-NL', { 
+                    day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' 
+                });
+            
+                return `
+                  <div class="card">
+                    <a href="./${slug}/" class="card-content">
+                      <div class="title-row">
+                        <span class="title">${title}</span>
+                      </div>
+                      <p class="description">${description}</p>
+                      <div class="tag-list">
+                        ${tags.map(t => `<span class="tag">${t}</span>`).join('')}
+                      </div>
+                      <span class="meta">Updated: ${dateStr}</span>
+                    </a>
+                    <button class="pin-btn ${isPinned ? 'active' : ''}" onclick="togglePin('${slug}', event)">
+                      ${isPinned ? '★' : '☆'}
+                    </button>
+                  </div>
+                `;
             }
           
             searchInput.addEventListener('input', render);
