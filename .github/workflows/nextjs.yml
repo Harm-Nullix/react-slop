@@ -79,7 +79,7 @@ jobs:
             const title = pkg.title || pkg.name || 'untitled';
             const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
             
-            // Dit zorgt ervoor dat $PROJECT_SLUG beschikbaar is in de rest van dit run-blok
+            // Schrijf naar GITHUB_ENV zodat volgende stappen/regels erbij kunnen
             fs.appendFileSync(process.env.GITHUB_ENV, `PROJECT_SLUG=${slug}\n`);
             console.log(`Slug succesvol gegenereerd: ${slug}`);
           } catch (err) {
@@ -88,8 +88,9 @@ jobs:
           }
           EOF
           
-          # Laad de zojuist gemaakte variabele direct in voor de huidige Bash-sessie
-          export PROJECT_SLUG=$(node -e "const pkg = JSON.parse(fs.readFileSync('./package.json', 'utf8')); const title = pkg.title || pkg.name || 'untitled'; console.log(title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, ''));")
+          # Haal de variabele direct op uit de GitHub environment voor gebruik in dit run-blok
+          # (Bash heeft een kleine refresh nodig om GITHUB_ENV binnen hetzelfde run-blok te lezen)
+          export PROJECT_SLUG=$(node -e "console.log(process.env.PROJECT_SLUG || '')")
           
           # We houden CLEAN_NAME nog wel even voor de map-structuur (uniekheid)
           CLEAN_NAME=$(echo ${GITHUB_REF_NAME} | sed 's/\//_/g')
