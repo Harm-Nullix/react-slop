@@ -37,7 +37,6 @@ jobs:
         run: |
           npx depcheck --json > depcheck-report.json || true
           
-          # Gebruik een veilige heredoc om quotes-conflicten te voorkomen
           node << 'EOF'
           const fs = require('fs');
           const { execSync } = require('child_process');
@@ -69,16 +68,25 @@ jobs:
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
         
+      # STAP 1: Genereer de slug in een eigen schone omgeving
+      - name: Generate Project Slug
+        id: slug_generator
+        run: |
+          node << 'EOF'
+          const fs = require('fs');
+          const pkg = JSON.parse(fs.readFileSync('./package.json', 'utf8'));
+          const title = pkg.title || pkg.name || 'untitled';
+          const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+          
+          // Sla de slug veilig op in de GitHub omgeving
+          fs.appendFileSync(process.env.GITHUB_ENV, `PROJECT_SLUG=${slug}\n`);
+          EOF
+
+      # STAP 2: Bouw de applicatie en update de registry
       - name: Build and Update Branch Registry
         run: |
-          # 1. Haal de titel op uit package.json en maak er een URL-veilige slug van
-          PROJECT_SLUG=$(node -e "const pkg = JSON.parse(fs.readFileSync('./package.json', 'utf8')); const title = pkg.title || pkg.name || 'untitled'; console.log(title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, ''));")
-          
-          # Exporteer de variabelen zodat zowel Vite als de Node-scripts erbij kunnen via process.env
-          export PROJECT_SLUG
+          # Gebruik de SLUG voor het Vite pad
           export VITE_BASE_PATH=/${{ github.event.repository.name }}/$PROJECT_SLUG/
-          
-          # Run de build
           pnpm run build --base=$VITE_BASE_PATH
           
           # Bereid de mappen voor
@@ -88,7 +96,7 @@ jobs:
           # Registry updaten (met cache buster)
           curl -fsSL "https://Harm-Nullix.github.io/react-slop/branches.json?$(date +%s)" > branches.json || echo "[]" > branches.json
           
-          # 2. Update branches.json via Node (Nu VEILIG met 'EOF' omdat we process.env gebruiken)
+          # Update branches.json via Node
           node << 'EOF'
           const fs = require('fs');
           
@@ -101,8 +109,6 @@ jobs:
           }
           
           const pkg = JSON.parse(fs.readFileSync('./package.json', 'utf8'));
-          
-          // Halen we veilig binnen via de environment
           const slug = process.env.PROJECT_SLUG;
           const branchName = process.env.GITHUB_REF_NAME;
           
@@ -131,7 +137,7 @@ jobs:
           fs.writeFileSync('root_deploy/branches.json', JSON.stringify(registry, null, 2));
           EOF
           
-          # 3. Genereer Portal HTML (Nu VEILIG met 'EOF'. Backslashes bij ${} zijn niet meer nodig!)
+          # Genereer Portal HTML (Let op de 'EOF' aan het begin en het einde!)
           cat << 'EOF' > root_deploy/index.html
           <!DOCTYPE html>
           <html lang="en">
