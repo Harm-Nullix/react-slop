@@ -60,5 +60,19 @@
     "description": "",
     "tags": [],
     "updatedAt": "2026-05-18T12:54:13.387Z"
+  },
+  {
+    "name": "gen/2026/05/18/gemini-3-flash-preview/lumensentry-albedo-adjusted-photo-sensitivity-guide",
+    "slug": "lumensentry-albedo-adjusted-photo-sensitivity-guide",
+    "title": "LumenSentry: Albedo-Adjusted Photo-Sensitivity Guide",
+    "description": "A precision safety tool for the ~1% of the population with extreme light sensitivity (Albinism, XP, or Type-I skin). It calculates safe exposure windows by factoring in surface albedo (reflectivity) and real-time solar positioning.",
+    "tags": [
+      "Health",
+      "Futuristic",
+      "Safety",
+      "Material3",
+      "Accessibility"
+    ],
+    "updatedAt": "2026-05-18T14:16:21.545Z"
   }
 ]
