@@ -14,3 +14,5 @@ Als je styling libraries gebruikt moet je deze expliciet importeren en controler
 Het moet zowel voor mobiel als desktop toegankelijk zijn. 
 
 Taal: Engels&Nederlands, gebaseerd op browser "lang". 
+
+Zorg dat de app.tsx ook de titel van de app zet in de browser.
