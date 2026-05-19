@@ -1,13 +1,16 @@
-Kan je een random simpele app in 1 React App.tsx bestand maken, die 1
+Kan je een random simpele app in 1 React App.tsx bestand maken.
 
-opdracht heeft om uit te voeren. Iets wat nog niet bestaat maar wellicht
+Die 1 opdracht heeft om uit te voeren. 
+Iets wat nog niet bestaat maar wellicht handig kan zijn voor 1% van de totale wereldbevolking. 
+1 doelgroep + 1 probleem + 1 oplossing (deze app).
 
-handig kan zijn voor 1% van de totale wereldbevolking. Het moet static
+Denk na over wat in dit jaar relevant is en hoe we de "edge" kunnen verleggen.
 
-werken. Gebruik strakke layouts, material 3 met een hint van
+Het moet static werken. 
+Gebruik strakke layouts, een eigen design met veel micro animaties.
+Als je styling libraries gebruikt moet je deze expliciet importeren en controleren op jusit gebruik.
+(Als voorbeeld tailwind: Directe Tailwind-configuratie + Goede laadvolgorde + css fallback)
 
-futoristisch design met veel micro animaties. Het moet zowel voor mobiel
+Het moet zowel voor mobiel als desktop toegankelijk zijn. 
 
-als desktop toegangkelijk zijn. Taal: Engels&Nederlands, gebasseerd
-
-op browser. 
+Taal: Engels&Nederlands, gebaseerd op browser "lang". 

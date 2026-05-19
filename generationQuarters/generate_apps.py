@@ -80,6 +80,10 @@ def generate_app(model):
     BELANGRIJK: Deze apps bestaan al, maak iets TOTAAL anders:
     [{existing_titles}]
 
+    TAGKEUZES: Kies maximaal 3 tags.
+    Ze moeten gaan over waar de app inhoudelijk over gaat.
+    Als er al tags zijn die erop lijken, gebruik die tag dan om dubbeling/soortgelijke tags te voorkomen.
+
     GEEF UITSLUITEND JSON TERUG IN DIT FORMAT:
     {{
       "title": "string",
