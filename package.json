@@ -1,11 +1,5 @@
 {
-  "name": "Micro-Chore",
-  "description": "Tasklist for the 1% who optimize every second.",
-  "tags": [
-    "gemini-3-pro",
-    "tasks",
-    "list"
-  ],
+  "name": "micro-chore",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -68,5 +62,12 @@
     "@vitejs/plugin-react": "^6.0.1",
     "typescript": "5.7.3",
     "vite": "^8.0.12"
-  }
+  },
+  "title": "Micro-Chore",
+  "description": "Tasklist for the 1% who optimize every second.",
+  "tags": [
+    "gemini-3-pro",
+    "tasks",
+    "list"
+  ]
 }
