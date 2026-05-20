@@ -66,8 +66,8 @@ jobs:
         
       - name: Build and Update Branch Registry
         run: |
-          CLEAN_NAME=$(echo ${GITHUB_REF_NAME} | sed 's/\//_/g')
-          export VITE_BASE_PATH=/${{ github.event.repository.name }}/$CLEAN_NAME/
+          # Gebruik de SLUG voor het Vite pad
+          export VITE_BASE_PATH=/${{ github.event.repository.name }}/$PROJECT_SLUG/
           pnpm run build --base=$VITE_BASE_PATH
           
           mkdir -p root_deploy/$CLEAN_NAME
