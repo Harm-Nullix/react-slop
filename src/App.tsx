@@ -123,7 +123,7 @@ export default function App() {
 
     injectTailwind();
   }, []);
-  if (isLoaded) {
+  if (!isLoaded) {
     return (
       <div style={{ backgroundColor: '#0f1115', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <div style={{ width: '40px', height: '40px', border: '3px solid rgba(168, 85, 247, 0.2)', borderTopColor: '#a855f7', borderRadius: '50%', animation: 'spin 1s linear infinite' }} />
