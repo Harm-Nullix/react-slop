@@ -1,5 +1,12 @@
 {
-  "name": "react-app",
+  "name": "Dominion",
+  "description": "Points calculation tool for dominion",
+  "tags": [
+    "claude-sonnet-4-6",
+    "dominion",
+    "points",
+    "calculator"
+  ],
   "version": "0.1.0",
   "private": true,
   "type": "module",
