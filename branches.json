@@ -1,17 +1,5 @@
 [
   {
-    "name": "gen/2026/05/14/claude-sonnet-4-6/caffeine-sync",
-    "slug": "caffeine-sync",
-    "title": "Caffeine Sync",
-    "description": "Drink koffie op het juiste moment.",
-    "tags": [
-      "claude-sonnet-4-6",
-      "caffeine",
-      "neuroscience"
-    ],
-    "updatedAt": "2026-05-14T08:11:25.440Z"
-  },
-  {
     "name": "gen/2026/05/12/claude-sonnet-4-6/dominion",
     "slug": "dominion",
     "title": "Dominion",
@@ -141,5 +129,18 @@
     "description": "",
     "tags": [],
     "updatedAt": "2026-05-20T19:53:43.489Z"
+  },
+  {
+    "name": "gen/2026/05/14/claude-sonnet-4-6/caffeine-sync",
+    "slug": "caffeine-sync",
+    "title": "Caffeine Sync",
+    "description": "Drink koffie op het juiste moment.",
+    "tags": [
+      "claude-sonnet-4-6",
+      "caffeine",
+      "neuroscience",
+      "timer"
+    ],
+    "updatedAt": "2026-05-20T19:54:27.203Z"
   }
 ]
