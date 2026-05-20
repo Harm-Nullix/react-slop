@@ -13,7 +13,7 @@ def init_claude():
 
     return anthropic.Anthropic(api_key=api_key)
 
-def call_claude(prompt, model="claude-3-5-sonnet-20240620"):
+def call_claude(prompt, model="claude-sonnet-4-6"):
     client = init_claude()
     # Mogelijkheid om model via env te overriden, anders sonnet (beste balans)
     model_name = os.environ.get("CLAUDE_MODEL", model)
@@ -23,7 +23,7 @@ def call_claude(prompt, model="claude-3-5-sonnet-20240620"):
         try:
             response = client.messages.parse(
                 model=model_name,
-                max_tokens=4096,
+                max_tokens=10000,
                 system="You are a senior React developer. Always respond in pure JSON format.",
                 messages=[
                     {"role": "user", "content": prompt}
@@ -46,8 +46,8 @@ def call_claude(prompt, model="claude-3-5-sonnet-20240620"):
                 },
             )
 
-            if response.parsed_content:
-                return response.parsed_content
+            if response and response.content and response.content[0] and response.content[0].text:
+                return response.content[0].text
 
             raise ValueError(f"Onverwacht response formaat van Claude: {type(response.content)}")
 
@@ -61,5 +61,5 @@ def call_claude(prompt, model="claude-3-5-sonnet-20240620"):
 
     return None
 
-def call(prompt, model="claude-3-5-sonnet-20240620"):
+def call(prompt, model="claude-sonnet-4-6"):
     return call_claude(prompt, model)
