@@ -56,7 +56,7 @@
 
   async function init() {
     const res = await fetch('./branches.json?t=' + Date.now());
-    projects = await res.json().filter(p => p.slug !== 'react-app');
+    projects = (await res.json()).filter(p => p.slug !== 'react-app');
     projects.sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt));
     render();
     renderTags();
