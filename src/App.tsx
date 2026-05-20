@@ -91,6 +91,47 @@ export default function App() {
     setResult(time);
   };
 
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    // Inject Tailwind CSS betrouwbaar
+    const injectTailwind = () => {
+      if (!document.getElementById('tailwind-cdn')) {
+        const script = document.createElement('script');
+        script.id = 'tailwind-cdn';
+        script.src = 'https://cdn.tailwindcss.com';
+
+        // Tailwind configuratie om onmiddellijke verwerking te forceren
+        script.onload = () => {
+          window.tailwind.config = {
+            darkMode: 'class',
+            theme: {
+              extend: {
+                colors: {
+                  slate: { 950: '#0f1115' }
+                }
+              }
+            }
+          };
+          setIsLoaded(true);
+        };
+        document.head.appendChild(script);
+      } else {
+        setIsLoaded(true);
+      }
+    };
+
+    injectTailwind();
+  }, []);
+  if (isLoaded) {
+    return (
+      <div style={{ backgroundColor: '#0f1115', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <div style={{ width: '40px', height: '40px', border: '3px solid rgba(168, 85, 247, 0.2)', borderTopColor: '#a855f7', borderRadius: '50%', animation: 'spin 1s linear infinite' }} />
+        <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
+      </div>
+    )
+  }
+
   return (
     <div className="min-h-screen bg-[#0f1115] text-[#e2e2e6] font-sans p-4 md:p-8 flex items-center justify-center select-none">
       {/* Background Glows */}
