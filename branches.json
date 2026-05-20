@@ -1,18 +1,5 @@
 [
   {
-    "name": "gen/2026/05/12/claude-sonnet-4-6/dominion",
-    "slug": "dominion",
-    "title": "Dominion",
-    "description": "Points calculation tool for dominion",
-    "tags": [
-      "claude-sonnet-4-6",
-      "dominion",
-      "points",
-      "calculator"
-    ],
-    "updatedAt": "2026-05-14T08:16:49.981Z"
-  },
-  {
     "name": "gen/2026/05/14/gemini-3-pro/chrono-sync",
     "slug": "chrono-sync",
     "title": "ChronoSync",
@@ -142,5 +129,18 @@
       "timer"
     ],
     "updatedAt": "2026-05-20T19:54:27.203Z"
+  },
+  {
+    "name": "gen/2026/05/12/claude-sonnet-4-6/dominion",
+    "slug": "dominion",
+    "title": "Dominion",
+    "description": "Points calculation tool for dominion",
+    "tags": [
+      "claude-sonnet-4-6",
+      "dominion",
+      "points",
+      "calculator"
+    ],
+    "updatedAt": "2026-05-20T19:57:42.121Z"
   }
 ]
