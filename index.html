@@ -25,7 +25,8 @@
     <div id="nested-list"></div>
   </div>
   <script>
-    fetch('./branches.json').then(r => r.json()).then(data => {
+    const cacheBuster = '?t=' + new Date().getTime();
+    fetch('./branches.json'+cacheBuster).then(r => r.json()).then(data => {
       const sortedData = data.sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt));
       const flatList = document.getElementById('flat-list');
       const nestedList = document.getElementById('nested-list');
