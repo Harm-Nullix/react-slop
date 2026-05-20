@@ -53,15 +53,16 @@ def call_ai(model, prompt):
     m_lower = model.lower()
     if "gemini" in m_lower:
         raw_response = gemini.call(prompt, model)
-        if (raw_response):
-            return extract_json(raw_response)
+
     elif "claude" in m_lower:
-        response = claude.call(prompt, model)
-        if response:
-            return response
+        raw_response = claude.call(prompt, model)
     else:
         print(f"❌ Model {model} niet ondersteund.")
         return None
+
+    if raw_response:
+        return extract_json(raw_response)
+
     return None
 
 def run_git(args, cwd=None):
@@ -80,7 +81,7 @@ def generate_app(model):
     BELANGRIJK: Deze apps bestaan al, maak iets TOTAAL anders:
     [{existing_titles}]
 
-    TAGKEUZES: Kies maximaal 3 tags.
+    TAGKEUZES: Kies maximaal 3/4 tags (inclusief je eigen model {model})
     Ze moeten gaan over waar de app inhoudelijk over gaat.
     Als er al tags zijn die erop lijken, gebruik die tag dan om dubbeling/soortgelijke tags te voorkomen.
 
@@ -146,5 +147,5 @@ def generate_app(model):
 
 if __name__ == "__main__":
     import sys
-    model_arg = sys.argv[1] if len(sys.argv) > 1 else "GPT-4"
+    model_arg = sys.argv[1] if len(sys.argv) > 1 else "gemini-3-flash-preview"
     generate_app(model_arg)

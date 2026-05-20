@@ -8,7 +8,7 @@ Denk na over wat in dit jaar relevant is en hoe we de "edge" kunnen verleggen.
 
 Het moet static werken. 
 Gebruik strakke layouts, een eigen design met veel micro animaties.
-Als je styling libraries gebruikt moet je deze expliciet importeren en controleren op jusit gebruik.
+Als je styling libraries gebruikt moet je deze expliciet importeren en controleren op juist gebruik.
 (Als voorbeeld tailwind: Directe Tailwind-configuratie + Goede laadvolgorde + css fallback)
 
 Het moet zowel voor mobiel als desktop toegankelijk zijn. 
