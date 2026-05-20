@@ -1,0 +1,11 @@
+# AI Engine
+google-genai>=1.64.0
+anthropic>=0.102.0
+
+# API & Web
+requests>=2.31.0
+python-dotenv>=1.0.0
+
+# Testing
+pytest>=7.4.0
+pytest-mock>=3.12.0
