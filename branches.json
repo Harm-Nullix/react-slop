@@ -1,1 +1,145 @@
-[{"name":"gen/2026/05/14/claude-sonnet-4-6/caffeine-sync","slug":"caffeine-sync","title":"Caffeine Sync","description":"Drink koffie op het juiste moment.","tags":["claude-sonnet-4-6","caffeine","neuroscience"],"updatedAt":"2026-05-14T08:11:25.440Z"},{"name":"gen/2026/05/12/claude-sonnet-4-6/dominion","slug":"dominion","title":"Dominion","description":"Points calculation tool for dominion","tags":["claude-sonnet-4-6","dominion","points","calculator"],"updatedAt":"2026-05-14T08:16:49.981Z"},{"name":"gen/2026/05/14/gemini-3-pro/chrono-sync","slug":"chrono-sync","title":"ChronoSync","description":"Calibrate your internal clock","tags":["gemini-3-pro","chrono","health"],"updatedAt":"2026-05-14T08:16:49.981Z"},{"name":"gen/2026/05/14/gemini-3-thinking/chrono-pulse","slug":"chrono-pulse","title":"ChronosPulse","description":"Bio-Rhythmic Task Aligner","tags":["gemini-3-thinking","chrono","health"],"updatedAt":"2026-05-14T08:16:49.981Z"},{"name":"gen/2026/05/15/claude-sonnet-4-6/myco-timer","slug":"myco-timer","title":"MycoTimer","description":"Mushroom colonisation calculator","tags":["claude-sonnet-4-6","mushrooms","calculator"],"updatedAt":"2026-05-15T06:33:22.860Z"},{"name":"gen/2026/05/15/gemini-3-pro/micro-chore","slug":"micro-chore","title":"Micro-Chore","description":"Tasklist for the 1% who optimize every second.","tags":["gemini-3-pro","tasks","list"],"updatedAt":"2026-05-15T06:49:44.041Z"},{"name":"gen/2026/05/20/claude-haiku-4-5/brewmind-cognitive-load-monitor","slug":"brewmind-cognitive-load-monitor","title":"BrewMind - Cognitive Load Monitor","description":"A real-time app for knowledge workers to track mental fatigue and optimize break timing. Monitors screen activity patterns and provides science-backed micro-break recommendations to prevent cognitive decline. Targets professionals struggling with decision fatigue and mental burnout in high-intensity desk jobs.","tags":["productivity","wellness","cognitive-health","claude-haiku-4-5"],"updatedAt":"2026-05-20T18:29:11.716Z"},{"name":"main","slug":"react-app","title":"react-app","description":"","tags":[],"updatedAt":"2026-05-20T18:30:04.041Z"},{"name":"gen/2026/05/18/gemini-3-flash-preview/lumensentry-albedo-adjusted-photo-sensitivity-guide","slug":"lumensentry-albedo-adjusted-photo-sensitivity-guide","title":"LumenSentry: Albedo-Adjusted Photo-Sensitivity Guide","description":"A precision safety tool for the ~1% of the population with extreme light sensitivity (Albinism, XP, or Type-I skin). It calculates safe exposure windows by factoring in surface albedo (reflectivity) and real-time solar positioning.","tags":["Health","Futuristic","Safety","Material3","Accessibility"],"updatedAt":"2026-05-20T19:00:56.835Z"},{"name":"gen/2026/05/18/gemini-3-flash-preview/lumephase-circadian-synchronizer","slug":"lumephase-circadian-synchronizer","title":"LumePhase: Circadian Synchronizer","description":"A high-precision light therapy calculator for shift workers and individuals in extreme latitudes to optimize their circadian phase-shift through calculated exposure windows.","tags":["circadian-rhythm","health-tech","material-3","bilingual","framer-motion"],"updatedAt":"2026-05-20T19:02:37.580Z"},{"name":"gen/2026/05/20/gemini-3-flash-preview/echostasis-ai-semantic-entropy-guard","slug":"echostasis-ai-semantic-entropy-guard","title":"EchoStasis - AI Semantic Entropy Guard","description":"Een gespecialiseerde tool voor AI-onderzoekers en prompt-engineers om de 'generatieve verval'-drempel van tekst te berekenen en te visualiseren, ter voorkoming van model-instorting door recursieve training.","tags":["gemini-3-flash-preview","AI-Safety","Semantic-Entropy","Prompt-Engineering"],"updatedAt":"2026-05-20T19:35:31.484Z"},{"name":"","updatedAt":"2026-05-20T19:44:48.173Z"}]
+[
+  {
+    "name": "gen/2026/05/14/claude-sonnet-4-6/caffeine-sync",
+    "slug": "caffeine-sync",
+    "title": "Caffeine Sync",
+    "description": "Drink koffie op het juiste moment.",
+    "tags": [
+      "claude-sonnet-4-6",
+      "caffeine",
+      "neuroscience"
+    ],
+    "updatedAt": "2026-05-14T08:11:25.440Z"
+  },
+  {
+    "name": "gen/2026/05/12/claude-sonnet-4-6/dominion",
+    "slug": "dominion",
+    "title": "Dominion",
+    "description": "Points calculation tool for dominion",
+    "tags": [
+      "claude-sonnet-4-6",
+      "dominion",
+      "points",
+      "calculator"
+    ],
+    "updatedAt": "2026-05-14T08:16:49.981Z"
+  },
+  {
+    "name": "gen/2026/05/14/gemini-3-pro/chrono-sync",
+    "slug": "chrono-sync",
+    "title": "ChronoSync",
+    "description": "Calibrate your internal clock",
+    "tags": [
+      "gemini-3-pro",
+      "chrono",
+      "health"
+    ],
+    "updatedAt": "2026-05-14T08:16:49.981Z"
+  },
+  {
+    "name": "gen/2026/05/14/gemini-3-thinking/chrono-pulse",
+    "slug": "chrono-pulse",
+    "title": "ChronosPulse",
+    "description": "Bio-Rhythmic Task Aligner",
+    "tags": [
+      "gemini-3-thinking",
+      "chrono",
+      "health"
+    ],
+    "updatedAt": "2026-05-14T08:16:49.981Z"
+  },
+  {
+    "name": "gen/2026/05/15/claude-sonnet-4-6/myco-timer",
+    "slug": "myco-timer",
+    "title": "MycoTimer",
+    "description": "Mushroom colonisation calculator",
+    "tags": [
+      "claude-sonnet-4-6",
+      "mushrooms",
+      "calculator"
+    ],
+    "updatedAt": "2026-05-15T06:33:22.860Z"
+  },
+  {
+    "name": "gen/2026/05/15/gemini-3-pro/micro-chore",
+    "slug": "micro-chore",
+    "title": "Micro-Chore",
+    "description": "Tasklist for the 1% who optimize every second.",
+    "tags": [
+      "gemini-3-pro",
+      "tasks",
+      "list"
+    ],
+    "updatedAt": "2026-05-15T06:49:44.041Z"
+  },
+  {
+    "name": "gen/2026/05/20/claude-haiku-4-5/brewmind-cognitive-load-monitor",
+    "slug": "brewmind-cognitive-load-monitor",
+    "title": "BrewMind - Cognitive Load Monitor",
+    "description": "A real-time app for knowledge workers to track mental fatigue and optimize break timing. Monitors screen activity patterns and provides science-backed micro-break recommendations to prevent cognitive decline. Targets professionals struggling with decision fatigue and mental burnout in high-intensity desk jobs.",
+    "tags": [
+      "productivity",
+      "wellness",
+      "cognitive-health",
+      "claude-haiku-4-5"
+    ],
+    "updatedAt": "2026-05-20T18:29:11.716Z"
+  },
+  {
+    "name": "gen/2026/05/18/gemini-3-flash-preview/lumensentry-albedo-adjusted-photo-sensitivity-guide",
+    "slug": "lumensentry-albedo-adjusted-photo-sensitivity-guide",
+    "title": "LumenSentry: Albedo-Adjusted Photo-Sensitivity Guide",
+    "description": "A precision safety tool for the ~1% of the population with extreme light sensitivity (Albinism, XP, or Type-I skin). It calculates safe exposure windows by factoring in surface albedo (reflectivity) and real-time solar positioning.",
+    "tags": [
+      "Health",
+      "Futuristic",
+      "Safety",
+      "Material3",
+      "Accessibility"
+    ],
+    "updatedAt": "2026-05-20T19:00:56.835Z"
+  },
+  {
+    "name": "gen/2026/05/18/gemini-3-flash-preview/lumephase-circadian-synchronizer",
+    "slug": "lumephase-circadian-synchronizer",
+    "title": "LumePhase: Circadian Synchronizer",
+    "description": "A high-precision light therapy calculator for shift workers and individuals in extreme latitudes to optimize their circadian phase-shift through calculated exposure windows.",
+    "tags": [
+      "circadian-rhythm",
+      "health-tech",
+      "material-3",
+      "bilingual",
+      "framer-motion"
+    ],
+    "updatedAt": "2026-05-20T19:02:37.580Z"
+  },
+  {
+    "name": "gen/2026/05/20/gemini-3-flash-preview/echostasis-ai-semantic-entropy-guard",
+    "slug": "echostasis-ai-semantic-entropy-guard",
+    "title": "EchoStasis - AI Semantic Entropy Guard",
+    "description": "Een gespecialiseerde tool voor AI-onderzoekers en prompt-engineers om de 'generatieve verval'-drempel van tekst te berekenen en te visualiseren, ter voorkoming van model-instorting door recursieve training.",
+    "tags": [
+      "gemini-3-flash-preview",
+      "AI-Safety",
+      "Semantic-Entropy",
+      "Prompt-Engineering"
+    ],
+    "updatedAt": "2026-05-20T19:35:31.484Z"
+  },
+  {
+    "name": "",
+    "slug": "",
+    "title": "",
+    "description": "",
+    "tags": [],
+    "updatedAt": "2026-05-20T19:44:48.173Z"
+  },
+  {
+    "name": "main",
+    "slug": "react-app",
+    "title": "react-app",
+    "description": "",
+    "tags": [],
+    "updatedAt": "2026-05-20T19:53:43.489Z"
+  }
+]
