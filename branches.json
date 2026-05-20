@@ -94,18 +94,18 @@
     "updatedAt": "2026-05-20T18:30:04.041Z"
   },
   {
-    "name": "gen/2026/05/18/gemini-3-flash-preview/lumephase-circadian-synchronizer",
-    "slug": "lumephase-circadian-synchronizer",
-    "title": "LumePhase: Circadian Synchronizer",
-    "description": "A high-precision light therapy calculator for shift workers and individuals in extreme latitudes to optimize their circadian phase-shift through calculated exposure windows.",
+    "name": "gen/2026/05/18/gemini-3-flash-preview/lumensentry-albedo-adjusted-photo-sensitivity-guide",
+    "slug": "lumensentry-albedo-adjusted-photo-sensitivity-guide",
+    "title": "LumenSentry: Albedo-Adjusted Photo-Sensitivity Guide",
+    "description": "A precision safety tool for the ~1% of the population with extreme light sensitivity (Albinism, XP, or Type-I skin). It calculates safe exposure windows by factoring in surface albedo (reflectivity) and real-time solar positioning.",
     "tags": [
-      "circadian-rhythm",
-      "health-tech",
-      "material-3",
-      "bilingual",
-      "framer-motion"
+      "Health",
+      "Futuristic",
+      "Safety",
+      "Material3",
+      "Accessibility"
     ],
-    "updatedAt": "2026-05-20T19:02:37.580Z"
+    "updatedAt": "2026-05-20T19:00:56.835Z"
   },
   {
     "name": "gen/2026/05/20/gemini-3-flash-preview/echostasis-ai-semantic-entropy-guard",
@@ -121,17 +121,17 @@
     "updatedAt": "2026-05-20T19:35:31.484Z"
   },
   {
-    "name": "gen/2026/05/18/gemini-3-flash-preview/lumensentry-albedo-adjusted-photo-sensitivity-guide",
-    "slug": "lumensentry-albedo-adjusted-photo-sensitivity-guide",
-    "title": "LumenSentry: Albedo-Adjusted Photo-Sensitivity Guide",
-    "description": "A precision safety tool for the ~1% of the population with extreme light sensitivity (Albinism, XP, or Type-I skin). It calculates safe exposure windows by factoring in surface albedo (reflectivity) and real-time solar positioning.",
+    "name": "gen/2026/05/18/gemini-3-flash-preview/lumephase-circadian-synchronizer",
+    "slug": "lumephase-circadian-synchronizer",
+    "title": "LumePhase: Circadian Synchronizer",
+    "description": "A high-precision light therapy calculator for shift workers and individuals in extreme latitudes to optimize their circadian phase-shift through calculated exposure windows.",
     "tags": [
-      "Health",
-      "Futuristic",
-      "Safety",
-      "Material3",
-      "Accessibility"
+      "circadian-rhythm",
+      "health-tech",
+      "material-3",
+      "bilingual",
+      "framer-motion"
     ],
-    "updatedAt": "2026-05-20T19:42:05.068Z"
+    "updatedAt": "2026-05-20T19:42:32.345Z"
   }
 ]
