@@ -1,12 +1,5 @@
 {
-  "name": "Dominion",
-  "description": "Points calculation tool for dominion",
-  "tags": [
-    "claude-sonnet-4-6",
-    "dominion",
-    "points",
-    "calculator"
-  ],
+  "name": "dominion",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -69,5 +62,13 @@
     "@vitejs/plugin-react": "^6.0.1",
     "typescript": "5.7.3",
     "vite": "^8.0.12"
-  }
+  },
+  "title": "Dominion",
+  "description": "Points calculation tool for dominion",
+  "tags": [
+    "claude-sonnet-4-6",
+    "dominion",
+    "points",
+    "calculator"
+  ]
 }
