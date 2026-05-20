@@ -7,12 +7,12 @@ on:
 
 permissions:
   contents: write # Crucial for pushing to the gh-pages branch
-  
+
 # Zorgt ervoor dat slechts één build tegelijk naar gh-pages kan schrijven.
 concurrency:
   group: deploy-to-gh-pages  # Vaste string voor de hele repo
   cancel-in-progress: false   # Belangrijk: zet ze in de wachtrij, niet annuleren!
-  
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -67,7 +67,7 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
-        
+
       # STAP 1: Genereer de slug in een eigen schone omgeving
       - name: Generate Project Slug
         id: slug_generator
@@ -144,6 +144,7 @@ jobs:
           <head>
             <meta charset="UTF-8">
             <title>React Slop Dashboard</title>
+            <script src="https://cdn.tailwindcss.com"></script>
             <style>
               :root { --primary: #2563eb; --bg: #f3f4f6; --card: #ffffff; }
               body { font-family: system-ui, -apple-system, sans-serif; padding: 20px; background: var(--bg); color: #1f2937; line-height: 1.5; }
@@ -196,7 +197,7 @@ jobs:
           
             async function init() {
               const res = await fetch('./branches.json?t=' + Date.now());
-              projects = await res.json();
+              projects = await res.json().filter(p => p.slug !== 'react-app');
               projects.sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt));
               render();
               renderTags();
@@ -282,7 +283,7 @@ jobs:
           </body>
           </html>
           EOF
-          
+
       - name: Deploy to gh-pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
