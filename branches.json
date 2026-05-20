@@ -108,5 +108,18 @@
       "Prompt-Engineering"
     ],
     "updatedAt": "2026-05-20T07:13:23.249Z"
+  },
+  {
+    "name": "gen/2026/05/20/claude-haiku-4-5/brewmind-cognitive-load-monitor",
+    "slug": "brewmind-cognitive-load-monitor",
+    "title": "BrewMind - Cognitive Load Monitor",
+    "description": "A real-time app for knowledge workers to track mental fatigue and optimize break timing. Monitors screen activity patterns and provides science-backed micro-break recommendations to prevent cognitive decline. Targets professionals struggling with decision fatigue and mental burnout in high-intensity desk jobs.",
+    "tags": [
+      "productivity",
+      "wellness",
+      "cognitive-health",
+      "claude-haiku-4-5"
+    ],
+    "updatedAt": "2026-05-20T18:29:11.716Z"
   }
 ]
