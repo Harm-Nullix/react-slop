@@ -61,6 +61,19 @@
     "updatedAt": "2026-05-15T06:49:44.041Z"
   },
   {
+    "name": "gen/2026/05/20/claude-haiku-4-5/brewmind-cognitive-load-monitor",
+    "slug": "brewmind-cognitive-load-monitor",
+    "title": "BrewMind - Cognitive Load Monitor",
+    "description": "A real-time app for knowledge workers to track mental fatigue and optimize break timing. Monitors screen activity patterns and provides science-backed micro-break recommendations to prevent cognitive decline. Targets professionals struggling with decision fatigue and mental burnout in high-intensity desk jobs.",
+    "tags": [
+      "productivity",
+      "wellness",
+      "cognitive-health",
+      "claude-haiku-4-5"
+    ],
+    "updatedAt": "2026-05-20T18:29:11.716Z"
+  },
+  {
     "name": "gen/2026/05/18/gemini-3-flash-preview/lumensentry-albedo-adjusted-photo-sensitivity-guide",
     "slug": "lumensentry-albedo-adjusted-photo-sensitivity-guide",
     "title": "LumenSentry: Albedo-Adjusted Photo-Sensitivity Guide",
@@ -110,19 +123,6 @@
     "updatedAt": "2026-05-20T19:58:19.062Z"
   },
   {
-    "name": "gen/2026/05/20/gemini-3-flash-preview/echostasis-ai-semantic-entropy-guard",
-    "slug": "echostasis-ai-semantic-entropy-guard",
-    "title": "EchoStasis - AI Semantic Entropy Guard",
-    "description": "Een gespecialiseerde tool voor AI-onderzoekers en prompt-engineers om de 'generatieve verval'-drempel van tekst te berekenen en te visualiseren, ter voorkoming van model-instorting door recursieve training.",
-    "tags": [
-      "gemini-3-flash-preview",
-      "AI-Safety",
-      "Semantic-Entropy",
-      "Prompt-Engineering"
-    ],
-    "updatedAt": "2026-05-21T06:31:01.069Z"
-  },
-  {
     "name": "main",
     "slug": "react-app",
     "title": "react-app",
@@ -143,16 +143,16 @@
     "updatedAt": "2026-05-21T06:38:23.640Z"
   },
   {
-    "name": "gen/2026/05/20/claude-haiku-4-5/brewmind-cognitive-load-monitor",
-    "slug": "brewmind-cognitive-load-monitor",
-    "title": "BrewMind - Cognitive Load Monitor",
-    "description": "A real-time app for knowledge workers to track mental fatigue and optimize break timing. Monitors screen activity patterns and provides science-backed micro-break recommendations to prevent cognitive decline. Targets professionals struggling with decision fatigue and mental burnout in high-intensity desk jobs.",
+    "name": "gen/2026/05/20/gemini-3-flash-preview/echostasis-ai-semantic-entropy-guard",
+    "slug": "echostasis-ai-semantic-entropy-guard",
+    "title": "EchoStasis - AI Semantic Entropy Guard",
+    "description": "Een gespecialiseerde tool voor AI-onderzoekers en prompt-engineers om de 'generatieve verval'-drempel van tekst te berekenen en te visualiseren, ter voorkoming van model-instorting door recursieve training.",
     "tags": [
-      "productivity",
-      "wellness",
-      "cognitive-health",
-      "claude-haiku-4-5"
+      "gemini-3-flash-preview",
+      "AI-Safety",
+      "Semantic-Entropy",
+      "Prompt-Engineering"
     ],
-    "updatedAt": "2026-05-21T06:39:22.712Z"
+    "updatedAt": "2026-05-21T06:39:53.276Z"
   }
 ]
