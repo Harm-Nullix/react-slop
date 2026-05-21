@@ -1,5 +1,5 @@
 {
-  "name": "react-app",
+  "name": "rootsync-edible-plant-forager-calendar",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -65,5 +65,13 @@
     "@vitejs/plugin-react": "^6.0.1",
     "typescript": "5.7.3",
     "vite": "^8.0.12"
-  }
+  },
+  "title": "RootSync - Edible Plant Forager Calendar",
+  "description": "Voor de 1% van mensen die bewust wild voedsel verzamelen: een seizoensgebonden, locatie-gebaseerde eetbare plantenkalender die bijhoudt wanneer en waar je specifieke wilde planten kunt vinden in Europa/Noord-Amerika. Lost het probleem op van 'wanneer is wat eetbaar en hoe herken ik het?' met visuele groeifase-indicatoren, oogstvensters en micro-animaties per plant.",
+  "tags": [
+    "foraging",
+    "nature",
+    "sustainability",
+    "claude-sonnet-4-6"
+  ]
 }
