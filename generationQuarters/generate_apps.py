@@ -83,7 +83,7 @@ def generate_app(model):
 
     TAGKEUZES: Kies maximaal 3/4 tags (inclusief je eigen model {model})
     Ze moeten gaan over waar de app inhoudelijk over gaat.
-    Als er al tags zijn die erop lijken, gebruik die tag dan om dubbeling/soortgelijke tags te voorkomen.
+    Probeer echt tags te vinden die er al op lijken en die te gebruiken om soortgelijke tags te voorkomen.
 
     GEEF UITSLUITEND JSON TERUG IN DIT FORMAT:
     {{
