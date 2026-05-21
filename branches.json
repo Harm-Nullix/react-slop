@@ -1,5 +1,18 @@
 [
   {
+    "name": "gen/2026/05/12/claude-sonnet-4-6/dominion",
+    "slug": "dominion",
+    "title": "Dominion",
+    "description": "Points calculation tool for dominion",
+    "tags": [
+      "claude-sonnet-4-6",
+      "dominion",
+      "points",
+      "calculator"
+    ],
+    "updatedAt": "2026-05-14T08:16:49.981Z"
+  },
+  {
     "name": "gen/2026/05/14/gemini-3-pro/chrono-sync",
     "slug": "chrono-sync",
     "title": "ChronoSync",
@@ -97,19 +110,6 @@
     "updatedAt": "2026-05-20T19:44:48.173Z"
   },
   {
-    "name": "gen/2026/05/14/claude-sonnet-4-6/caffeine-sync",
-    "slug": "caffeine-sync",
-    "title": "Caffeine Sync",
-    "description": "Drink koffie op het juiste moment.",
-    "tags": [
-      "claude-sonnet-4-6",
-      "caffeine",
-      "neuroscience",
-      "timer"
-    ],
-    "updatedAt": "2026-05-20T19:58:19.062Z"
-  },
-  {
     "name": "gen/2026/05/20/gemini-3-flash-preview/echostasis-ai-semantic-entropy-guard",
     "slug": "echostasis-ai-semantic-entropy-guard",
     "title": "EchoStasis - AI Semantic Entropy Guard",
@@ -131,16 +131,16 @@
     "updatedAt": "2026-05-21T06:33:17.091Z"
   },
   {
-    "name": "gen/2026/05/12/claude-sonnet-4-6/dominion",
-    "slug": "dominion",
-    "title": "Dominion",
-    "description": "Points calculation tool for dominion",
+    "name": "gen/2026/05/14/claude-sonnet-4-6/caffeine-sync",
+    "slug": "caffeine-sync",
+    "title": "Caffeine Sync",
+    "description": "Drink koffie op het juiste moment.",
     "tags": [
       "claude-sonnet-4-6",
-      "dominion",
-      "points",
-      "calculator"
+      "caffeine",
+      "neuroscience",
+      "timer"
     ],
-    "updatedAt": "2026-05-21T06:36:34.414Z"
+    "updatedAt": "2026-05-21T06:37:03.227Z"
   }
 ]
