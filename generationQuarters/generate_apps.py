@@ -71,6 +71,7 @@ def run_git(args, cwd=None):
 def generate_app(model):
     existing_apps = get_existing_apps()
     existing_titles = ", ".join([a['title'] for a in existing_apps if a.get('title')])
+    existing_tags = ", ".join([a['tags'] for a in existing_apps if a.get('tags')])
 
     with open(MASTER_PROMPT_FILE, 'r') as f:
         master_prompt = f.read()
@@ -84,6 +85,7 @@ def generate_app(model):
     TAGKEUZES: Kies maximaal 3/4 tags (inclusief je eigen model {model})
     Ze moeten gaan over waar de app inhoudelijk over gaat.
     Probeer echt tags te vinden die er al op lijken en die te gebruiken om soortgelijke tags te voorkomen.
+    Bestaande tags: [{existing_tags}]
 
     GEEF UITSLUITEND JSON TERUG IN DIT FORMAT:
     {{
