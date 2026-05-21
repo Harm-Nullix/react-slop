@@ -102,25 +102,20 @@
     "updatedAt": "2026-05-20T19:02:37.580Z"
   },
   {
-    "name": "gen/2026/05/20/gemini-3-flash-preview/echostasis-ai-semantic-entropy-guard",
-    "slug": "echostasis-ai-semantic-entropy-guard",
-    "title": "EchoStasis - AI Semantic Entropy Guard",
-    "description": "Een gespecialiseerde tool voor AI-onderzoekers en prompt-engineers om de 'generatieve verval'-drempel van tekst te berekenen en te visualiseren, ter voorkoming van model-instorting door recursieve training.",
-    "tags": [
-      "gemini-3-flash-preview",
-      "AI-Safety",
-      "Semantic-Entropy",
-      "Prompt-Engineering"
-    ],
-    "updatedAt": "2026-05-20T19:35:31.484Z"
-  },
-  {
     "name": "",
     "slug": "",
     "title": "",
     "description": "",
     "tags": [],
     "updatedAt": "2026-05-20T19:44:48.173Z"
+  },
+  {
+    "name": "main",
+    "slug": "react-app",
+    "title": "react-app",
+    "description": "",
+    "tags": [],
+    "updatedAt": "2026-05-20T19:53:43.489Z"
   },
   {
     "name": "gen/2026/05/14/claude-sonnet-4-6/caffeine-sync",
@@ -136,11 +131,16 @@
     "updatedAt": "2026-05-20T19:58:19.062Z"
   },
   {
-    "name": "main",
-    "slug": "react-app",
-    "title": "react-app",
-    "description": "",
-    "tags": [],
-    "updatedAt": "2026-05-21T06:30:37.439Z"
+    "name": "gen/2026/05/20/gemini-3-flash-preview/echostasis-ai-semantic-entropy-guard",
+    "slug": "echostasis-ai-semantic-entropy-guard",
+    "title": "EchoStasis - AI Semantic Entropy Guard",
+    "description": "Een gespecialiseerde tool voor AI-onderzoekers en prompt-engineers om de 'generatieve verval'-drempel van tekst te berekenen en te visualiseren, ter voorkoming van model-instorting door recursieve training.",
+    "tags": [
+      "gemini-3-flash-preview",
+      "AI-Safety",
+      "Semantic-Entropy",
+      "Prompt-Engineering"
+    ],
+    "updatedAt": "2026-05-21T06:31:01.069Z"
   }
 ]
