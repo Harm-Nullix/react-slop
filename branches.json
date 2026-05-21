@@ -154,5 +154,18 @@
     "description": "",
     "tags": [],
     "updatedAt": "2026-05-21T07:08:05.139Z"
+  },
+  {
+    "name": "gen/2026/05/21/gemini-3-flash-preview/optipulse-ocular-health-guardian",
+    "slug": "optipulse-ocular-health-guardian",
+    "title": "OptiPulse - Ocular Health Guardian",
+    "description": "A digital tool designed for the 1% of the world population who suffer from severe Computer Vision Syndrome (CVS). It uses subconscious visual rhythm to trigger involuntary blinking, maintaining eye lubrication without breaking deep-work flow.",
+    "tags": [
+      "eye-health",
+      "wellness",
+      "accessibility",
+      "gemini-1.5-flash"
+    ],
+    "updatedAt": "2026-05-21T07:12:53.307Z"
   }
 ]
