@@ -167,5 +167,18 @@
     "description": "",
     "tags": [],
     "updatedAt": "2026-05-21T07:32:07.691Z"
+  },
+  {
+    "name": "gen/2026/05/21/claude-sonnet-4-6/rootsync-edible-plant-forager-calendar",
+    "slug": "rootsync-edible-plant-forager-calendar",
+    "title": "RootSync - Edible Plant Forager Calendar",
+    "description": "Voor de 1% van mensen die bewust wild voedsel verzamelen: een seizoensgebonden, locatie-gebaseerde eetbare plantenkalender die bijhoudt wanneer en waar je specifieke wilde planten kunt vinden in Europa/Noord-Amerika. Lost het probleem op van 'wanneer is wat eetbaar en hoe herken ik het?' met visuele groeifase-indicatoren, oogstvensters en micro-animaties per plant.",
+    "tags": [
+      "foraging",
+      "nature",
+      "sustainability",
+      "claude-sonnet-4-6"
+    ],
+    "updatedAt": "2026-05-21T07:34:59.685Z"
   }
 ]
