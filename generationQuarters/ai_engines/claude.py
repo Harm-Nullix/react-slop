@@ -23,7 +23,7 @@ def call_claude(prompt, model="claude-sonnet-4-6"):
         try:
             response = client.messages.parse(
                 model=model_name,
-                max_tokens=10000,
+                max_tokens=20000,
                 system="You are a senior React developer. Always respond in pure JSON format.",
                 messages=[
                     {"role": "user", "content": prompt}
