@@ -144,15 +144,15 @@
     "updatedAt": "2026-05-21T06:33:17.091Z"
   },
   {
-    "name": "gen/2026/05/14/gemini-3-pro/chrono-sync",
-    "slug": "chronosync",
-    "title": "ChronoSync",
-    "description": "Calibrate your internal clock",
+    "name": "gen/2026/05/14/gemini-3-thinking/chrono-pulse",
+    "slug": "chronospulse",
+    "title": "ChronosPulse",
+    "description": "Bio-Rhythmic Task Aligner",
     "tags": [
-      "gemini-3-pro",
+      "gemini-3-thinking",
       "chrono",
       "health"
     ],
-    "updatedAt": "2026-05-21T06:37:29.405Z"
+    "updatedAt": "2026-05-21T06:37:56.462Z"
   }
 ]
