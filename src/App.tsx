@@ -297,6 +297,20 @@ export default function App() {
     return () => document.head.removeChild(style);
   }, []);
 
+
+  useEffect(() => {
+    document.title = T.headline.join(' ');
+    const meta = document.querySelector('meta[name="description"]');
+    if (meta) {
+      meta.setAttribute('content', T.subtitle);
+    } else {
+      const m = document.createElement('meta');
+      m.name = 'description';
+      m.content = T.subtitle;
+      document.head.appendChild(m);
+    }
+  }, [T]);
+
   // Live clock tick
   useEffect(() => {
     const id = setInterval(() => setNow(nowMin()), 30_000);
