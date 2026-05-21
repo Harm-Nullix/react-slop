@@ -5,6 +5,14 @@
 # Store current branch to return to it later
 CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
 
+# Stash any local changes to avoid conflicts during checkout/pull
+HAS_STASHED=false
+if ! git diff-index --quiet HEAD --; then
+    echo "Stashing local changes..."
+    git stash push -m "Auto-stash before merge_main_to_gen.sh"
+    HAS_STASHED=true
+fi
+
 echo "Fetching latest changes from origin..."
 git fetch origin
 
@@ -27,6 +35,14 @@ for branch in $BRANCHES; do
     # Checkout the branch (creating it from remote if necessary)
     if git checkout "$branch"; then
         echo "Successfully checked out $branch"
+        
+        # Ensure the local branch is up to date with origin
+        echo "Updating $branch from origin..."
+        if git pull origin "$branch" --rebase; then
+             echo "Local branch $branch is now up to date"
+        else
+             echo "Warning: Failed to pull $branch. Attempting to continue anyway..."
+        fi
         
         # Attempt to merge main into the current branch
         if git merge origin/main -m "Merge branch 'main' into $branch"; then
@@ -82,5 +98,11 @@ done
 # Return to the original branch
 echo "Returning to branch: $CURRENT_BRANCH"
 git checkout "$CURRENT_BRANCH"
+
+# Restore stashed changes if any
+if [ "$HAS_STASHED" = true ]; then
+    echo "Restoring stashed changes..."
+    git stash pop
+fi
 
 echo "Done!"
