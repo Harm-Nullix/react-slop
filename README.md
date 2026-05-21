@@ -1,35 +1,84 @@
-# v0-react-starter-template
+# React Slop 🎨
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [v0](https://v0.app).
+A repository full of experimental, spontaneous React applications—each living in its own branch.
 
-## Built with v0
+## 🎯 Purpose
 
-This repository is linked to a [v0](https://v0.app) project. You can continue developing by visiting the link below -- start new chats to make changes, and v0 will push commits directly to this repo. Every merge to `main` will automatically deploy.
+This is a playground for building quick, creative React apps without the pressure of perfection. Each branch contains a standalone application designed to solve a niche problem or
+explore an interesting concept. Think of it as a digital sketchbook for React ideas.
 
-[Continue working on v0 →](https://v0.app/chat/projects/prj_G40AYOGsNHsYKj8NEXcE64GB7Aro)
+## 📦 Structure
 
-## Getting Started
+- **Main Branch**: Contains the base template and CI/CD configuration
+- **Feature Branches**: Each branch houses a unique React application
+- **GitHub Pages**: Automatically deploys all branches to persistent subfolders
 
-First, run the development server:
+## 🔄 Workflow
+
+Every branch follows the same pattern:
+
+1. **Auto-Deployment**: Push to any branch triggers an automatic build
+2. **Dependency Management**: Missing dependencies are automatically detected and installed
+3. **Project Slug**: Generated from `package.json` title/name for URL-friendly paths
+4. **Registry Update**: `branches.json` maintains a live index of all deployed apps
+5. **Persistent Deployment**: Each app lives at `https://harm-nullix.github.io/react-slop/{project-slug}/`
+
+### Key Files
+
+- **`package.json`**: Must include `title`, `description`, and optional `tags` for registry
+  - Remember to update `name` to match the project slug!
+- **`.github/workflows/nextjs.yml`**: Handles the entire build and deploy pipeline
+- **`src/App.tsx`**: Single-file apps are encouraged for simplicity
+
+## 🌐 Navigation
+
+Visit the [live registry](https://harm-nullix.github.io/react-slop/branches.json) to see all deployed apps, or check the `gh-pages` branch for the complete file structure.
+
+## 🛠️ Tech Stack
+
+- **Framework**: React with TypeScript
+- **Styling**: Tailwind CSS
+- **UI Components**: Radix UI primitives
+- **Build Tool**: Vite
+- **Package Manager**: pnpm
+- **Analytics**: Vercel Analytics (production only)
+
+## 💡 App Guidelines
+
+Each app should:
+
+- Target a specific audience (≈1% of global population)
+- Solve one clear problem with one solution
+- Work statically without backend dependencies
+- Be responsive (mobile + desktop)
+- Support English & Dutch based on browser language
+- Include micro-animations for polish
+- Update document title dynamically
+
+## 🚀 Quick Start
+
+Create a new app:
+
+1. **Create Branch**: `git checkout -b gen/YYYY/MM/DD/your-app-name`
+2. **Configure**: Update `title`, `description`, and `tags` in `package.json`
+3. **Develop**: Edit `src/App.tsx` (single-file apps preferred)
+4. **Deploy**: `git push origin gen/YYYY/MM/DD/your-app-name`
+
+## 🛠️ Maintenance
+
+To keep all app branches up to date with the latest base template changes:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+chmod +x merge_main_to_gen.sh
+./merge_main_to_gen.sh
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+This script will:
+- Iterate through all `gen/*` branches
+- Merge `main` into each branch
+- Resolve conflicts (preferring `src/App.tsx` from the feature branch and everything else from `main`)
+- Push updates back to origin
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📄 License
 
-## Learn More
-
-To learn more, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-- [v0 Documentation](https://v0.app/docs) - learn about v0 and how to use it.
-
-<a href="https://v0.app/chat/api/kiro/clone/Harm-Nullix/v0-react-starter-template" alt="Open in Kiro"><img src="https://pdgvvgmkdvyeydso.public.blob.vercel-storage.com/open%20in%20kiro.svg?sanitize=true" /></a>
+Not at all!
