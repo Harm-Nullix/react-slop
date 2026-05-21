@@ -49,18 +49,6 @@
     "updatedAt": "2026-05-15T06:33:22.860Z"
   },
   {
-    "name": "gen/2026/05/15/gemini-3-pro/micro-chore",
-    "slug": "micro-chore",
-    "title": "Micro-Chore",
-    "description": "Tasklist for the 1% who optimize every second.",
-    "tags": [
-      "gemini-3-pro",
-      "tasks",
-      "list"
-    ],
-    "updatedAt": "2026-05-15T06:49:44.041Z"
-  },
-  {
     "name": "gen/2026/05/20/claude-haiku-4-5/brewmind-cognitive-load-monitor",
     "slug": "brewmind-cognitive-load-monitor",
     "title": "BrewMind - Cognitive Load Monitor",
@@ -144,15 +132,15 @@
     "updatedAt": "2026-05-21T06:33:17.091Z"
   },
   {
-    "name": "gen/2026/05/15/claude-sonnet-4-6/myco-timer",
-    "slug": "mycotimer",
-    "title": "MycoTimer",
-    "description": "Mushroom colonisation calculator",
+    "name": "gen/2026/05/15/gemini-3-pro/micro-chore",
+    "slug": "micro-chore",
+    "title": "Micro-Chore",
+    "description": "Tasklist for the 1% who optimize every second.",
     "tags": [
-      "claude-sonnet-4-6",
-      "mushrooms",
-      "calculator"
+      "gemini-3-pro",
+      "tasks",
+      "list"
     ],
-    "updatedAt": "2026-05-21T06:38:23.640Z"
+    "updatedAt": "2026-05-21T06:38:52.881Z"
   }
 ]
