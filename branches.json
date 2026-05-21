@@ -49,17 +49,16 @@
     "updatedAt": "2026-05-15T06:33:22.860Z"
   },
   {
-    "name": "gen/2026/05/20/claude-haiku-4-5/brewmind-cognitive-load-monitor",
-    "slug": "brewmind-cognitive-load-monitor",
-    "title": "BrewMind - Cognitive Load Monitor",
-    "description": "A real-time app for knowledge workers to track mental fatigue and optimize break timing. Monitors screen activity patterns and provides science-backed micro-break recommendations to prevent cognitive decline. Targets professionals struggling with decision fatigue and mental burnout in high-intensity desk jobs.",
+    "name": "gen/2026/05/15/gemini-3-pro/micro-chore",
+    "slug": "micro-chore",
+    "title": "Micro-Chore",
+    "description": "Tasklist for the 1% who optimize every second.",
     "tags": [
-      "productivity",
-      "wellness",
-      "cognitive-health",
-      "claude-haiku-4-5"
+      "gemini-3-pro",
+      "tasks",
+      "list"
     ],
-    "updatedAt": "2026-05-20T18:29:11.716Z"
+    "updatedAt": "2026-05-15T06:49:44.041Z"
   },
   {
     "name": "gen/2026/05/18/gemini-3-flash-preview/lumensentry-albedo-adjusted-photo-sensitivity-guide",
@@ -132,15 +131,28 @@
     "updatedAt": "2026-05-21T06:33:17.091Z"
   },
   {
-    "name": "gen/2026/05/15/gemini-3-pro/micro-chore",
-    "slug": "micro-chore",
-    "title": "Micro-Chore",
-    "description": "Tasklist for the 1% who optimize every second.",
+    "name": "gen/2026/05/15/claude-sonnet-4-6/myco-timer",
+    "slug": "mycotimer",
+    "title": "MycoTimer",
+    "description": "Mushroom colonisation calculator",
     "tags": [
-      "gemini-3-pro",
-      "tasks",
-      "list"
+      "claude-sonnet-4-6",
+      "mushrooms",
+      "calculator"
     ],
-    "updatedAt": "2026-05-21T06:38:52.881Z"
+    "updatedAt": "2026-05-21T06:38:23.640Z"
+  },
+  {
+    "name": "gen/2026/05/20/claude-haiku-4-5/brewmind-cognitive-load-monitor",
+    "slug": "brewmind-cognitive-load-monitor",
+    "title": "BrewMind - Cognitive Load Monitor",
+    "description": "A real-time app for knowledge workers to track mental fatigue and optimize break timing. Monitors screen activity patterns and provides science-backed micro-break recommendations to prevent cognitive decline. Targets professionals struggling with decision fatigue and mental burnout in high-intensity desk jobs.",
+    "tags": [
+      "productivity",
+      "wellness",
+      "cognitive-health",
+      "claude-haiku-4-5"
+    ],
+    "updatedAt": "2026-05-21T06:39:22.712Z"
   }
 ]
