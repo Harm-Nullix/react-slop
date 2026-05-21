@@ -3,9 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>APP HUB</title>
+  <title>ShortApps</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="apple-touch-icon" sizes="180x180" href="./public/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./public/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./public/favicon-16x16.png">
+  <link rel="manifest" href="./public/site.webmanifest">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -41,6 +45,10 @@
       max-width: 1320px; margin: 0 auto;
       padding: 32px 28px 20px;
       display: flex; align-items: baseline; gap: 16px;
+    }
+    .logo-img {
+      width: clamp(1.8rem, 4vw, 3rem);
+      height: clamp(1.8rem, 4vw, 3rem);
     }
     .logo {
       font-family: 'Syne', sans-serif; font-weight: 800;
@@ -315,7 +323,8 @@
 <body>
 
 <div class="header">
-  <div class="logo">APP<span class="logo-dot">·</span>HUB</div>
+  <img class="logo-img" src="./public/android-chrome-512x512.png" alt="Short Apps Logo"/>
+  <div class="logo">SHORT<span class="logo-dot">·</span>APPS</div>
   <span class="total-badge" id="total-badge">laden...</span>
 </div>
 
