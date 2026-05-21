@@ -1,18 +1,5 @@
 [
   {
-    "name": "gen/2026/05/12/claude-sonnet-4-6/dominion",
-    "slug": "dominion",
-    "title": "Dominion",
-    "description": "Points calculation tool for dominion",
-    "tags": [
-      "claude-sonnet-4-6",
-      "dominion",
-      "points",
-      "calculator"
-    ],
-    "updatedAt": "2026-05-14T08:16:49.981Z"
-  },
-  {
     "name": "gen/2026/05/14/gemini-3-pro/chrono-sync",
     "slug": "chrono-sync",
     "title": "ChronoSync",
@@ -148,6 +135,19 @@
     "updatedAt": "2026-05-21T06:50:16.991Z"
   },
   {
+    "name": "gen/2026/05/21/gemini-3-flash-preview/optipulse-ocular-health-guardian",
+    "slug": "optipulse-ocular-health-guardian",
+    "title": "OptiPulse - Ocular Health Guardian",
+    "description": "A digital tool designed for the 1% of the world population who suffer from severe Computer Vision Syndrome (CVS). It uses subconscious visual rhythm to trigger involuntary blinking, maintaining eye lubrication without breaking deep-work flow.",
+    "tags": [
+      "eye-health",
+      "wellness",
+      "accessibility",
+      "gemini-1.5-flash"
+    ],
+    "updatedAt": "2026-05-21T07:12:53.307Z"
+  },
+  {
     "name": "gen/2026/05/21/claude-sonnet-4-6/rootsync-edible-plant-forager-calendar",
     "slug": "rootsync-edible-plant-forager-calendar",
     "title": "RootSync - Edible Plant Forager Calendar",
@@ -161,24 +161,24 @@
     "updatedAt": "2026-05-21T07:34:59.685Z"
   },
   {
-    "name": "main",
+    "name": "gen/2026/05/12/claude-sonnet-4-6/dominion",
+    "slug": "dominion",
+    "title": "Dominion",
+    "description": "Points calculation tool for dominion",
+    "tags": [
+      "claude-sonnet-4-6",
+      "dominion",
+      "points",
+      "calculator"
+    ],
+    "updatedAt": "2026-05-21T07:38:37.440Z"
+  },
+  {
+    "name": "gh-pages",
     "slug": "react-app",
     "title": "react-app",
     "description": "",
     "tags": [],
-    "updatedAt": "2026-05-21T07:35:40.039Z"
-  },
-  {
-    "name": "gen/2026/05/21/gemini-3-flash-preview/optipulse-ocular-health-guardian",
-    "slug": "optipulse-ocular-health-guardian",
-    "title": "OptiPulse - Ocular Health Guardian",
-    "description": "A digital tool designed for the 1% of the world population who suffer from severe Computer Vision Syndrome (CVS). It uses subconscious visual rhythm to trigger involuntary blinking, maintaining eye lubrication without breaking deep-work flow.",
-    "tags": [
-      "eye-health",
-      "wellness",
-      "accessibility",
-      "gemini-1.5-flash"
-    ],
-    "updatedAt": "2026-05-21T07:39:08.325Z"
+    "updatedAt": "2026-05-21T07:39:59.504Z"
   }
 ]
