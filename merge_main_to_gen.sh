@@ -43,7 +43,7 @@ for branch in $BRANCHES; do
         else
              echo "Warning: Failed to pull $branch. Attempting to continue anyway..."
         fi
-        
+
         # Attempt to merge main into the current branch
         if git merge origin/main -m "Merge branch 'main' into $branch"; then
             echo "Successfully merged main into $branch"
@@ -56,14 +56,14 @@ for branch in $BRANCHES; do
                 git checkout --ours src/App.tsx
                 git add src/App.tsx
             fi
-            
+
             # 2. Resolve index.html using "ours" ONLY if branch is gh-pages
             if [ "$branch" == "gh-pages" ] && git status --short | grep -q "index.html"; then
                 echo "Resolving index.html using target branch version (gh-pages)"
                 git checkout --ours index.html
                 git add index.html
             fi
-            
+
             # 3. Resolve everything else using "theirs" (the main branch)
             # Find all remaining unmerged files
             UNMERGED=$(git diff --name-only --diff-filter=U)
@@ -72,7 +72,7 @@ for branch in $BRANCHES; do
                 git checkout --theirs $UNMERGED
                 git add $UNMERGED
             fi
-            
+
             # 3. Finalize the merge
             if git commit -m "Merge branch 'main' into $branch (with custom conflict resolution)"; then
                 echo "Successfully resolved conflicts and merged main into $branch"
@@ -82,7 +82,7 @@ for branch in $BRANCHES; do
                 continue
             fi
         fi
-        
+
         # Push the merge commit to origin
         if git push origin "$branch"; then
             echo "Successfully pushed $branch to origin"
