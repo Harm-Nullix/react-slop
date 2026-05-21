@@ -110,6 +110,19 @@
     "updatedAt": "2026-05-20T19:44:48.173Z"
   },
   {
+    "name": "gen/2026/05/14/claude-sonnet-4-6/caffeine-sync",
+    "slug": "caffeine-sync",
+    "title": "Caffeine Sync",
+    "description": "Drink koffie op het juiste moment.",
+    "tags": [
+      "claude-sonnet-4-6",
+      "caffeine",
+      "neuroscience",
+      "timer"
+    ],
+    "updatedAt": "2026-05-20T19:58:19.062Z"
+  },
+  {
     "name": "gen/2026/05/20/gemini-3-flash-preview/echostasis-ai-semantic-entropy-guard",
     "slug": "echostasis-ai-semantic-entropy-guard",
     "title": "EchoStasis - AI Semantic Entropy Guard",
@@ -131,16 +144,15 @@
     "updatedAt": "2026-05-21T06:33:17.091Z"
   },
   {
-    "name": "gen/2026/05/14/claude-sonnet-4-6/caffeine-sync",
-    "slug": "caffeine-sync",
-    "title": "Caffeine Sync",
-    "description": "Drink koffie op het juiste moment.",
+    "name": "gen/2026/05/14/gemini-3-pro/chrono-sync",
+    "slug": "chronosync",
+    "title": "ChronoSync",
+    "description": "Calibrate your internal clock",
     "tags": [
-      "claude-sonnet-4-6",
-      "caffeine",
-      "neuroscience",
-      "timer"
+      "gemini-3-pro",
+      "chrono",
+      "health"
     ],
-    "updatedAt": "2026-05-21T06:37:03.227Z"
+    "updatedAt": "2026-05-21T06:37:29.405Z"
   }
 ]
