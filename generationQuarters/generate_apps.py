@@ -114,6 +114,8 @@ def generate_app(model):
     try:
         # 1. Clone repo naar tijdelijke map
         run_git(["clone", "--depth", "1", REPO_URL, "."], cwd=project_dir)
+        
+
 
         # 2. Maak nieuwe branch
         run_git(["checkout", "-b", branch_name], cwd=project_dir)
@@ -130,6 +132,13 @@ def generate_app(model):
         # 4. Update App.tsx
         app_path = project_dir / "src" / "App.tsx"
         app_path.write_text(ai_response['app'])
+
+        # 4. Append comment to index.html to force git to see it as a change
+        index_html_path = project_dir / "index.html"
+        if index_html_path.exists():
+            with open(index_html_path, 'a') as f:
+                f.write(f"\n<!-- commit for `{REPO_URL}` -->")
+        
 
         # 5. Push naar GitHub
         run_git(["add", "."], cwd=project_dir)
