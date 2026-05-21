@@ -28,19 +28,49 @@ for branch in $BRANCHES; do
     if git checkout "$branch"; then
         echo "Successfully checked out $branch"
         
-        # Merge main into the current branch, favoring our changes in case of conflicts
-        if git merge origin/main -X ours -m "Merge branch 'main' into $branch"; then
-            echo "Successfully merged main into $branch (favored $branch in conflicts)"
-            
-            # Push the merge commit to origin
-            if git push origin "$branch"; then
-                echo "Successfully pushed $branch to origin"
-            else
-                echo "Error: Failed to push $branch to origin"
-            fi
+        # Attempt to merge main into the current branch
+        if git merge origin/main -m "Merge branch 'main' into $branch"; then
+            echo "Successfully merged main into $branch"
         else
-            echo "Error: Merge conflict or failure on branch $branch. Aborting merge."
-            git merge --abort
+            echo "Merge conflict detected on $branch. Resolving according to rules..."
+            
+            # 1. Resolve index.html and src/App.tsx using "ours" (the target branch)
+            if git status --short | grep -q "index.html"; then
+                echo "Resolving index.html using target branch version"
+                git checkout --ours index.html
+                git add index.html
+            fi
+            
+            if git status --short | grep -q "src/App.tsx"; then
+                echo "Resolving src/App.tsx using target branch version"
+                git checkout --ours src/App.tsx
+                git add src/App.tsx
+            fi
+            
+            # 2. Resolve everything else using "theirs" (the main branch)
+            # Find all remaining unmerged files
+            UNMERGED=$(git diff --name-only --diff-filter=U)
+            if [ -n "$UNMERGED" ]; then
+                echo "Resolving remaining conflicts using main branch version: $UNMERGED"
+                git checkout --theirs $UNMERGED
+                git add $UNMERGED
+            fi
+            
+            # 3. Finalize the merge
+            if git commit -m "Merge branch 'main' into $branch (with custom conflict resolution)"; then
+                echo "Successfully resolved conflicts and merged main into $branch"
+            else
+                echo "Error: Failed to commit merge for $branch. Aborting."
+                git merge --abort
+                continue
+            fi
+        fi
+        
+        # Push the merge commit to origin
+        if git push origin "$branch"; then
+            echo "Successfully pushed $branch to origin"
+        else
+            echo "Error: Failed to push $branch to origin"
         fi
     else
         echo "Error: Failed to checkout $branch"
