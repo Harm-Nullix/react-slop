@@ -8,12 +8,12 @@ CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
 echo "Fetching latest changes from origin..."
 git fetch origin
 
-# Get list of local branches starting with "gen/"
+# Get list of local branches starting with "gen/" or "gh-pages"
 # Also includes remote branches by creating them locally if they don't exist
-BRANCHES=$(git branch -a | grep 'remotes/origin/gen/' | sed 's|.*remotes/origin/||')
+BRANCHES=$(git branch -a | grep -E 'remotes/origin/gen/|remotes/origin/gh-pages' | sed 's|.*remotes/origin/||')
 
 if [ -z "$BRANCHES" ]; then
-    echo "No branches starting with 'gen/' found."
+    echo "No matching branches found."
     exit 0
 fi
 
@@ -34,20 +34,21 @@ for branch in $BRANCHES; do
         else
             echo "Merge conflict detected on $branch. Resolving according to rules..."
             
-            # 1. Resolve index.html and src/App.tsx using "ours" (the target branch)
-            if git status --short | grep -q "index.html"; then
-                echo "Resolving index.html using target branch version"
-                git checkout --ours index.html
-                git add index.html
-            fi
-            
+            # 1. Resolve src/App.tsx using "ours" (the target branch)
             if git status --short | grep -q "src/App.tsx"; then
                 echo "Resolving src/App.tsx using target branch version"
                 git checkout --ours src/App.tsx
                 git add src/App.tsx
             fi
             
-            # 2. Resolve everything else using "theirs" (the main branch)
+            # 2. Resolve index.html using "ours" ONLY if branch is gh-pages
+            if [ "$branch" == "gh-pages" ] && git status --short | grep -q "index.html"; then
+                echo "Resolving index.html using target branch version (gh-pages)"
+                git checkout --ours index.html
+                git add index.html
+            fi
+            
+            # 3. Resolve everything else using "theirs" (the main branch)
             # Find all remaining unmerged files
             UNMERGED=$(git diff --name-only --diff-filter=U)
             if [ -n "$UNMERGED" ]; then
