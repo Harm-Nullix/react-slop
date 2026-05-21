@@ -144,15 +144,15 @@
     "updatedAt": "2026-05-21T06:33:17.091Z"
   },
   {
-    "name": "gen/2026/05/14/gemini-3-thinking/chrono-pulse",
-    "slug": "chronospulse",
-    "title": "ChronosPulse",
-    "description": "Bio-Rhythmic Task Aligner",
+    "name": "gen/2026/05/15/claude-sonnet-4-6/myco-timer",
+    "slug": "mycotimer",
+    "title": "MycoTimer",
+    "description": "Mushroom colonisation calculator",
     "tags": [
-      "gemini-3-thinking",
-      "chrono",
-      "health"
+      "claude-sonnet-4-6",
+      "mushrooms",
+      "calculator"
     ],
-    "updatedAt": "2026-05-21T06:37:56.462Z"
+    "updatedAt": "2026-05-21T06:38:23.640Z"
   }
 ]
