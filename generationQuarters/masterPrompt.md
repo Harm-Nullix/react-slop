@@ -7,12 +7,10 @@ Iets wat nog niet bestaat maar wellicht handig kan zijn voor 1% van de totale we
 Denk na over wat in dit jaar relevant is en hoe we de "edge" kunnen verleggen.
 
 Het moet static werken. 
-Gebruik strakke layouts, een eigen design met veel micro animaties.
-Als je styling libraries gebruikt moet je deze expliciet importeren en controleren op juist gebruik.
-(Als voorbeeld tailwind: Directe Tailwind-configuratie + Goede laadvolgorde + css fallback)
+Gebruik een random cool design met veel micro animaties.
 
 Het moet zowel voor mobiel als desktop toegankelijk zijn. 
 
 Taal: Engels&Nederlands, gebaseerd op browser "lang". 
 
-Zorg dat de app.tsx ook de titel van de app zet in de browser.
+Zorg dat de App.tsx ook de titel van de app zet in de browser. (Dus de meta aanpast van de pagina)
