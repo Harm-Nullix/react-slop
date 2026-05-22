@@ -266,7 +266,7 @@ export default function App() {
                     <p className="text-xs text-slate-400 mb-2">{t.calcResult}</p>
                     <div className="flex items-center gap-3">
                       <Clock className="w-5 h-5 text-indigo-400" />
-                      <span className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-indigo-400 font-mono">
+                      <span className="text-2xl font-bold  bg-clip-text  from-cyan-400 to-indigo-400 font-mono">
                         {Math.round(perceivedTaskTime)} min
                       </span>
                     </div>
