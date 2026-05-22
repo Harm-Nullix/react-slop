@@ -143,7 +143,7 @@ def push_project(project_dir, branch_name, title, model):
     # 5. Push naar GitHub
     run_git(["add", "."], cwd=project_dir)
     run_git(["commit", "-m", f"AI Build: {title} (by {model})"], cwd=project_dir)
-    run_git(["push", "origin", branch_name], cwd=project_dir)
+    run_git(["push", "--force", "origin", branch_name], cwd=project_dir)
     print(f"✅ Succesfully deployed {title}!")
 
 def cleanup_project(project_dir):
