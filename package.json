@@ -1,5 +1,5 @@
 {
-  "name": "react-app",
+  "name": "soilpulse-urban-balcony-soil-health-tracker",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -65,5 +65,13 @@
     "@vitejs/plugin-react": "^6.0.1",
     "typescript": "5.7.3",
     "vite": "^8.0.12"
-  }
+  },
+  "title": "SoilPulse \u2013 Urban Balcony Soil Health Tracker",
+  "description": "Voor de 80 miljoen stadstuiniers wereldwijd die groenten kweken op balkons of in kleine tuinen: SoilPulse helpt je bijhouden wanneer je grond opnieuw bemest, omgespit of aangevuld moet worden \u2013 zonder sensoren of apps van derden. E\u00e9n tool, \u00e9\u00e9n doel: gezonde grond, betere oogst.",
+  "tags": [
+    "claude-sonnet-4-6",
+    "sustainability",
+    "foraging",
+    "wellness"
+  ]
 }
