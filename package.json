@@ -1,5 +1,5 @@
 {
-  "name": "react-app",
+  "name": "chromaphon",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -68,5 +68,13 @@
     "postcss": "^8.5.15",
     "typescript": "5.7.3",
     "vite": "^8.0.12"
-  }
+  },
+  "title": "ChromaPhon",
+  "description": "An interactive Synesthetic Color-to-Phoneme Palette Designer and Web Audio Soundscape Harmonizer designed specifically for people with Grapheme-Color Synesthesia.",
+  "tags": [
+    "gemini-3-pro",
+    "design-interaction",
+    "wellness",
+    "accessibility"
+  ]
 }
