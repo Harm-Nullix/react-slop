@@ -1,5 +1,5 @@
 {
-  "name": "react-app",
+  "name": "echo-app",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -65,5 +65,12 @@
     "@vitejs/plugin-react": "^6.0.1",
     "typescript": "5.7.3",
     "vite": "^8.0.12"
-  }
+  },
+  "title": "Echo App",
+  "description": "The first interface that thinks before you do. No UI. No friction. Just intention made real.",
+  "tags": [
+    "claude-sonnet-4-5",
+    "design",
+    "interaction"
+  ]
 }
