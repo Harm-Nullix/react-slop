@@ -249,14 +249,6 @@
     "updatedAt": "2026-05-22T14:16:18.622Z"
   },
   {
-    "name": "main",
-    "slug": "react-app",
-    "title": "react-app",
-    "description": "",
-    "tags": [],
-    "updatedAt": "2026-05-22T14:30:29.336Z"
-  },
-  {
     "name": "gen/2026/05/22/claude-opus-4-7/glaciergaze",
     "slug": "glaciergaze",
     "title": "GlacierGaze",
@@ -267,5 +259,13 @@
       "ice-climbing"
     ],
     "updatedAt": "2026-05-22T14:42:44.719Z"
+  },
+  {
+    "name": "main",
+    "slug": "react-app",
+    "title": "react-app",
+    "description": "",
+    "tags": [],
+    "updatedAt": "2026-05-22T15:10:25.655Z"
   }
 ]
