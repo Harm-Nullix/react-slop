@@ -1,9 +1,11 @@
 import subprocess
 import time
 
-# MODELS = ["claude-haiku-4-5", "gemini-3-flash-preview"]
-MODELS = ["claude-sonnet-4-6", "gemini-3-flash-preview"]
-# MODELS = ["gemini-3-flash-preview"]
+# MODELS = ["claude-haiku-4-5", "gemini-flash-latest"]
+# MODELS = ["claude-sonnet-4-6", "gemini-flash-latest"]
+# MODELS = ["claude-opus-4-7", "gemini-pro-latest"]
+# MODELS = ["gemini-pro-latest"]
+MODELS = ["gemini-flash-latest"]
 # MODELS = ["claude-haiku-4-5"]
 # MODELS = ["claude-sonnet-4-6"]
 
