@@ -255,5 +255,17 @@
     "description": "",
     "tags": [],
     "updatedAt": "2026-05-22T14:30:29.336Z"
+  },
+  {
+    "name": "gen/2026/05/22/claude-opus-4-7/glaciergaze",
+    "slug": "glaciergaze",
+    "title": "GlacierGaze",
+    "description": "A precision tool for ice climbers and glaciologists to log, visualize and predict crevasse stress patterns through tactile waveform interaction. Tap rhythmically to record ice density signatures, then watch as a generative algorithm extrapolates structural integrity curves. Built for the 1% who navigate vertical ice.",
+    "tags": [
+      "claude-opus-4-7",
+      "glaciology",
+      "ice-climbing"
+    ],
+    "updatedAt": "2026-05-22T14:42:44.719Z"
   }
 ]
