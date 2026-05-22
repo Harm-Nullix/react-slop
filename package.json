@@ -1,5 +1,5 @@
 {
-  "name": "react-app",
+  "name": "glaciergaze",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -68,5 +68,12 @@
     "postcss": "^8.5.15",
     "typescript": "5.7.3",
     "vite": "^8.0.12"
-  }
+  },
+  "title": "GlacierGaze",
+  "description": "A precision tool for ice climbers and glaciologists to log, visualize and predict crevasse stress patterns through tactile waveform interaction. Tap rhythmically to record ice density signatures, then watch as a generative algorithm extrapolates structural integrity curves. Built for the 1% who navigate vertical ice.",
+  "tags": [
+    "claude-opus-4-7",
+    "glaciology",
+    "ice-climbing"
+  ]
 }
