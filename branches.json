@@ -193,5 +193,18 @@
       "wellness"
     ],
     "updatedAt": "2026-05-22T11:35:57.166Z"
+  },
+  {
+    "name": "gen/2026/05/22/gemini-3-flash-preview/fluida-temporal-volume",
+    "slug": "fluida-temporal-volume",
+    "title": "Fluida: Temporal Volume",
+    "description": "A sensory-based time visualization tool for the 1% of people with high-functioning 'Time Blindness' (ADHD/Neurodivergence) who find traditional clocks anxiety-inducing. Instead of numbers, it uses fluid dynamics to visualize time as a volume of 'focus liquid' that evaporates or fills, helping users perceive time through flow rather than deadlines.",
+    "tags": [
+      "gemini-3-flash-preview",
+      "neurodiversity",
+      "flow-state",
+      "time-perception"
+    ],
+    "updatedAt": "2026-05-22T11:37:27.229Z"
   }
 ]
