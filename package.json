@@ -1,5 +1,5 @@
 {
-  "name": "react-app",
+  "name": "baropace",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -65,5 +65,13 @@
     "@vitejs/plugin-react": "^6.0.1",
     "typescript": "5.7.3",
     "vite": "^8.0.12"
-  }
+  },
+  "title": "BaroPace",
+  "description": "A micro-animation calibrated dynamic pressure-equalization utility for high-speed skyscraper elevator commuters to mitigate transient barotrauma and modern vertigo.",
+  "tags": [
+    "gemini-3-flash-preview",
+    "health-tech",
+    "bilingual",
+    "design-interaction"
+  ]
 }
