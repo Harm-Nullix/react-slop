@@ -2,3 +2,4 @@
 temp_*
 test_output/
 __pycache__/
+custom.json
