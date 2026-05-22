@@ -15,6 +15,7 @@ load_dotenv()
 REPO_URL = "https://github.com/Harm-Nullix/react-slop.git"
 BRANCHES_JSON_URL = "https://harm-nullix.github.io/react-slop/branches.json"
 MASTER_PROMPT_FILE = "masterPrompt.md"
+PACKAGE_JSON = "../package.json"
 GENERATION_DIR = Path("./quarters")
 
 def slugify(text):
@@ -81,6 +82,12 @@ def create_prompt(model):
     with open(MASTER_PROMPT_FILE, 'r') as f:
         master_prompt = f.read()
 
+    with open(PACKAGE_JSON, 'r') as f:
+        package_data = json.load(f)
+
+    current_year = datetime.datetime.now().year
+    current_month = datetime.datetime.now().month
+    current_day = datetime.datetime.now().day
     full_prompt = f"""
     {master_prompt}
 
@@ -91,6 +98,11 @@ def create_prompt(model):
     Ze moeten gaan over waar de app inhoudelijk over gaat.
     Probeer echt tags te vinden die er al op lijken en die te gebruiken om soortgelijke tags te voorkomen.
     Bestaande tags: [{existing_tags}]
+    
+    PACKAGES:
+    We hebben momenteel deze packages, maar nieuwe packages mogen worden toegevoegd.
+    Let wel op dat het {current_day}/{current_month}/{current_year} is en je up-to-date packages gebruikt!
+    {package_data.get('dependencies')}
 
     GEEF UITSLUITEND JSON TERUG IN DIT FORMAT:
     {{

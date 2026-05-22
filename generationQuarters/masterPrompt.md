@@ -1,4 +1,6 @@
 Kan je een random simpele app in 1 React App.tsx bestand maken.
+LET OP: Ik ben zelf een senior developer en designer dus je moet erg je best doen om indruk te maken.
+Belangrijk hierin is ook dat je technieken gebruikt die iedereen versteld doen staan.
 
 Die 1 opdracht heeft om uit te voeren. 
 Iets wat nog niet bestaat maar wellicht handig kan zijn voor 1% van de totale wereldbevolking. 
@@ -7,7 +9,9 @@ Iets wat nog niet bestaat maar wellicht handig kan zijn voor 1% van de totale we
 Denk na over wat in dit jaar relevant is en hoe we de "edge" kunnen verleggen.
 
 Het moet static werken. 
-Gebruik een random cool design met veel micro animaties.
+Als je dingen hebt die kunnen updaten of opslaan, gebruik dan de localStorage om dit soort dingen te doen!
+
+Gebruik een random cool design met HEEL VEEL micro animaties. Het moet visueel ultra pleasing zijn.
 
 Het moet zowel voor mobiel als desktop toegankelijk zijn. 
 
