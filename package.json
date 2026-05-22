@@ -1,5 +1,5 @@
 {
-  "name": "react-app",
+  "name": "fluida-temporal-volume",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -65,5 +65,13 @@
     "@vitejs/plugin-react": "^6.0.1",
     "typescript": "5.7.3",
     "vite": "^8.0.12"
-  }
+  },
+  "title": "Fluida: Temporal Volume",
+  "description": "A sensory-based time visualization tool for the 1% of people with high-functioning 'Time Blindness' (ADHD/Neurodivergence) who find traditional clocks anxiety-inducing. Instead of numbers, it uses fluid dynamics to visualize time as a volume of 'focus liquid' that evaporates or fills, helping users perceive time through flow rather than deadlines.",
+  "tags": [
+    "gemini-3-flash-preview",
+    "neurodiversity",
+    "flow-state",
+    "time-perception"
+  ]
 }
