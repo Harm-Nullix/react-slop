@@ -231,5 +231,17 @@
     "description": "",
     "tags": [],
     "updatedAt": "2026-05-22T13:34:56.801Z"
+  },
+  {
+    "name": "gen/2026/05/14/gemini-3-thinking/chrono-pulse",
+    "slug": "chronospulse",
+    "title": "ChronosPulse",
+    "description": "Bio-Rhythmic Task Aligner",
+    "tags": [
+      "gemini-3-thinking",
+      "chrono",
+      "health"
+    ],
+    "updatedAt": "2026-05-22T14:08:22.740Z"
   }
 ]
