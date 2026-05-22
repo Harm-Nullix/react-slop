@@ -243,5 +243,17 @@
       "health"
     ],
     "updatedAt": "2026-05-22T14:08:22.740Z"
+  },
+  {
+    "name": "gen/2026/05/14/gemini-3-pro/chrono-sync",
+    "slug": "chronosync",
+    "title": "ChronoSync",
+    "description": "Calibrate your internal clock",
+    "tags": [
+      "gemini-3-pro",
+      "chrono",
+      "health"
+    ],
+    "updatedAt": "2026-05-22T14:09:26.286Z"
   }
 ]
