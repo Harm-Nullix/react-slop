@@ -40,7 +40,12 @@ def extract_json(text):
 
         if start_idx != -1 and end_idx != -1:
             json_str = clean_text[start_idx:end_idx + 1]
-            return json.loads(json_str)
+            try:
+                return json.loads(json_str)
+            except json.JSONDecodeError:
+                # Probeer trailing commas te verwijderen (veelvoorkomend bij AI output)
+                json_str = re.sub(r',\s*([}\]])', r'\1', json_str)
+                return json.loads(json_str)
 
         return json.loads(clean_text)
     except Exception as e:
@@ -68,9 +73,10 @@ def call_ai(model, prompt):
 def run_git(args, cwd=None):
     subprocess.run(["git"] + args, cwd=cwd, check=True)
 
-def generate_app(model):
+def create_prompt(model):
     existing_apps = get_existing_apps()
     existing_titles = ", ".join([a['title'] for a in existing_apps if a.get('title')])
+    existing_tags = ", ".join([", ".join(a['tags']) for a in existing_apps if a.get('tags')])
 
     with open(MASTER_PROMPT_FILE, 'r') as f:
         master_prompt = f.read()
@@ -84,6 +90,7 @@ def generate_app(model):
     TAGKEUZES: Kies maximaal 3/4 tags (inclusief je eigen model {model})
     Ze moeten gaan over waar de app inhoudelijk over gaat.
     Probeer echt tags te vinden die er al op lijken en die te gebruiken om soortgelijke tags te voorkomen.
+    Bestaande tags: [{existing_tags}]
 
     GEEF UITSLUITEND JSON TERUG IN DIT FORMAT:
     {{
@@ -93,15 +100,9 @@ def generate_app(model):
       "app": "volledige inhoud van App.tsx als string"
     }}
     """
+    return full_prompt
 
-    # AI aanroepen
-    ai_response = call_ai(model, full_prompt)
-
-    if not ai_response:
-        print(f"🛑 Generatie mislukt voor {model}. Overslaan...")
-
-        return
-
+def build_project(ai_response, model):
     title = ai_response.get('title', 'Untitled App')
     slug = slugify(title)
     branch_name = f"gen/{datetime.date.today().strftime('%Y/%m/%d')}/{model.lower()}/{slug}"
@@ -111,48 +112,64 @@ def generate_app(model):
 
     print(f"🚀 Generating: {title} on branch {branch_name}")
 
+    # 1. Clone repo naar tijdelijke map
+    run_git(["clone", "--depth", "1", REPO_URL, "."], cwd=project_dir)
+
+    # 2. Maak nieuwe branch
+    run_git(["checkout", "-b", branch_name], cwd=project_dir)
+
+    # 3. Update package.json
+    pkg_path = project_dir / "package.json"
+    pkg = json.loads(pkg_path.read_text())
+    pkg["name"] = slug
+    pkg["title"] = title
+    pkg["description"] = ai_response['description']
+    pkg["tags"] = ai_response['tags']
+    pkg_path.write_text(json.dumps(pkg, indent=2))
+
+    # 4. Update App.tsx
+    app_path = project_dir / "src" / "App.tsx"
+    app_path.write_text(ai_response['app'])
+
+    # 4. Append comment to index.html to force git to see it as a change
+    index_html_path = project_dir / "index.html"
+    if index_html_path.exists():
+        with open(index_html_path, 'a') as f:
+            f.write(f"\n<!-- commit for `{REPO_URL}` -->")
+            
+    return project_dir, branch_name, title
+
+def push_project(project_dir, branch_name, title, model):
+    # 5. Push naar GitHub
+    run_git(["add", "."], cwd=project_dir)
+    run_git(["commit", "-m", f"AI Build: {title} (by {model})"], cwd=project_dir)
+    run_git(["push", "origin", branch_name], cwd=project_dir)
+    print(f"✅ Succesfully deployed {title}!")
+
+def cleanup_project(project_dir):
+    if project_dir and project_dir.exists():
+        print(f"🧹 Cleaning up directory: {project_dir}")
+        # shutil.rmtree verwijdert de map inclusief alle bestanden en .git folder
+        shutil.rmtree(project_dir)
+
+def generate_app(model):
+    full_prompt = create_prompt(model)
+    
+    # AI aanroepen
+    ai_response = call_ai(model, full_prompt)
+
+    if not ai_response:
+        print(f"🛑 Generatie mislukt voor {model}. Overslaan...")
+        return
+
+    project_dir = None
     try:
-        # 1. Clone repo naar tijdelijke map
-        run_git(["clone", "--depth", "1", REPO_URL, "."], cwd=project_dir)
-        
-
-
-        # 2. Maak nieuwe branch
-        run_git(["checkout", "-b", branch_name], cwd=project_dir)
-
-        # 3. Update package.json
-        pkg_path = project_dir / "package.json"
-        pkg = json.loads(pkg_path.read_text())
-        pkg["name"] = slug
-        pkg["title"] = title
-        pkg["description"] = ai_response['description']
-        pkg["tags"] = ai_response['tags']
-        pkg_path.write_text(json.dumps(pkg, indent=2))
-
-        # 4. Update App.tsx
-        app_path = project_dir / "src" / "App.tsx"
-        app_path.write_text(ai_response['app'])
-
-        # 4. Append comment to index.html to force git to see it as a change
-        index_html_path = project_dir / "index.html"
-        if index_html_path.exists():
-            with open(index_html_path, 'a') as f:
-                f.write(f"\n<!-- commit for `{REPO_URL}` -->")
-        
-
-        # 5. Push naar GitHub
-        run_git(["add", "."], cwd=project_dir)
-        run_git(["commit", "-m", f"AI Build: {title} (by {model})"], cwd=project_dir)
-        run_git(["push", "origin", branch_name], cwd=project_dir)
-
-        print(f"✅ Succesfully deployed {title}!")
-        
-
+        project_dir, branch_name, title = build_project(ai_response, model)
+        push_project(project_dir, branch_name, title, model)
+    except Exception as e:
+        print(f"❌ Error during generation/push: {e}")
     finally:
-        if project_dir.exists():
-            print(f"🧹 Cleaning up directory: {project_dir}")
-            # shutil.rmtree verwijdert de map inclusief alle bestanden en .git folder
-            shutil.rmtree(project_dir)
+        cleanup_project(project_dir)
 
 if __name__ == "__main__":
     import sys
