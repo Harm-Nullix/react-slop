@@ -180,5 +180,18 @@
     "description": "",
     "tags": [],
     "updatedAt": "2026-05-21T07:58:21.890Z"
+  },
+  {
+    "name": "gen/2026/05/22/claude-sonnet-4-6/soilpulse-urban-balcony-soil-health-tracker",
+    "slug": "soilpulse-urban-balcony-soil-health-tracker",
+    "title": "SoilPulse – Urban Balcony Soil Health Tracker",
+    "description": "Voor de 80 miljoen stadstuiniers wereldwijd die groenten kweken op balkons of in kleine tuinen: SoilPulse helpt je bijhouden wanneer je grond opnieuw bemest, omgespit of aangevuld moet worden – zonder sensoren of apps van derden. Eén tool, één doel: gezonde grond, betere oogst.",
+    "tags": [
+      "claude-sonnet-4-6",
+      "sustainability",
+      "foraging",
+      "wellness"
+    ],
+    "updatedAt": "2026-05-22T11:35:57.166Z"
   }
 ]
