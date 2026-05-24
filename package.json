@@ -1,5 +1,5 @@
 {
-  "name": "react-app",
+  "name": "nocturnalshift",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -68,5 +68,13 @@
     "postcss": "^8.5.15",
     "typescript": "5.7.3",
     "vite": "^8.0.12"
-  }
+  },
+  "title": "NocturnalShift",
+  "description": "For the 1% of workers who consistently work night shifts \u2014 a smart circadian disruption manager that helps night-shift workers optimize their sleep windows, light exposure timing, and meal schedules based on their specific shift pattern. Tracks cumulative sleep debt and recovery windows.",
+  "tags": [
+    "claude-sonnet-4-6",
+    "shift-work",
+    "sleep-science",
+    "wellness"
+  ]
 }
