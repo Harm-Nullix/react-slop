@@ -293,5 +293,18 @@
       "wellness"
     ],
     "updatedAt": "2026-05-24T11:26:50.631Z"
+  },
+  {
+    "name": "gen/2026/05/24/gemini-flash-latest/synestro-grapheme-color-synesthesia-aligner",
+    "slug": "synestro-grapheme-color-synesthesia-aligner",
+    "title": "Synestro - Grapheme-Color Synesthesia Aligner",
+    "description": "A sensory-calming interface and cognitive text harmonizer tailored for grapheme-color synesthetes to map, calibrate, and read in their personal neurological color spectrum.",
+    "tags": [
+      "gemini-3-flash-preview",
+      "neurodiversity",
+      "design-interaction",
+      "wellness"
+    ],
+    "updatedAt": "2026-05-24T11:28:00.534Z"
   }
 ]
