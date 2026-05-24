@@ -280,5 +280,18 @@
       "accessibility"
     ],
     "updatedAt": "2026-05-22T15:11:13.860Z"
+  },
+  {
+    "name": "gen/2026/05/24/claude-sonnet-4-6/nocturnalshift",
+    "slug": "nocturnalshift",
+    "title": "NocturnalShift",
+    "description": "For the 1% of workers who consistently work night shifts — a smart circadian disruption manager that helps night-shift workers optimize their sleep windows, light exposure timing, and meal schedules based on their specific shift pattern. Tracks cumulative sleep debt and recovery windows.",
+    "tags": [
+      "claude-sonnet-4-6",
+      "shift-work",
+      "sleep-science",
+      "wellness"
+    ],
+    "updatedAt": "2026-05-24T11:26:50.631Z"
   }
 ]
