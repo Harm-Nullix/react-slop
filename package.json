@@ -1,5 +1,5 @@
 {
-  "name": "react-app",
+  "name": "synestro-grapheme-color-synesthesia-aligner",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -68,5 +68,13 @@
     "postcss": "^8.5.15",
     "typescript": "5.7.3",
     "vite": "^8.0.12"
-  }
+  },
+  "title": "Synestro - Grapheme-Color Synesthesia Aligner",
+  "description": "A sensory-calming interface and cognitive text harmonizer tailored for grapheme-color synesthetes to map, calibrate, and read in their personal neurological color spectrum.",
+  "tags": [
+    "gemini-3-flash-preview",
+    "neurodiversity",
+    "design-interaction",
+    "wellness"
+  ]
 }
