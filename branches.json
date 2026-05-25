@@ -319,5 +319,18 @@
       "wind-planning"
     ],
     "updatedAt": "2026-05-25T15:57:53.431Z"
+  },
+  {
+    "name": "gen/2026/05/25/gemini-flash-latest/tetrachroma-functional-tetrachromacy-isolator-calibration-matrix",
+    "slug": "tetrachroma-functional-tetrachromacy-isolator-calibration-matrix",
+    "title": "Tetrachroma: Functional Tetrachromacy Isolator & Calibration Matrix",
+    "description": "A high-precision visual calibration matrix built for the ~1% of the population with functional tetrachromacy (possessing a 4th cone receptor). It maps hyper-subtle variations in the yellow-green spectrum, mitigates digital-screen RGB compression fatigue, and exports optimized micro-spectral design palettes.",
+    "tags": [
+      "color-science",
+      "accessibility",
+      "design-interaction",
+      "gemini-3-flash-preview"
+    ],
+    "updatedAt": "2026-05-25T15:59:15.666Z"
   }
 ]
