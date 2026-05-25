@@ -1,5 +1,5 @@
 {
-  "name": "react-app",
+  "name": "thermoscribe-wildfire-evacuation-wind-planner",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -68,5 +68,13 @@
     "postcss": "^8.5.15",
     "typescript": "5.7.3",
     "vite": "^8.0.12"
-  }
+  },
+  "title": "ThermoScribe \u2013 Wildfire Evacuation Wind Planner",
+  "description": "Voor de ~80 miljoen mensen die in wildfire-risicogebieden wonen: een hyper-lokale, offline windpatroon & evacuatieroutelogger die realtime windrichting visueel combineert met opgeslagen persoonlijke vluchtroutes. Geen internet nodig, alles in localStorage.",
+  "tags": [
+    "claude-sonnet-4-6",
+    "wildfire",
+    "evacuation",
+    "wind-planning"
+  ]
 }
