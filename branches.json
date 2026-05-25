@@ -306,5 +306,18 @@
       "wellness"
     ],
     "updatedAt": "2026-05-24T11:28:00.534Z"
+  },
+  {
+    "name": "gen/2026/05/25/claude-sonnet-4-6/thermoscribe-wildfire-evacuation-wind-planner",
+    "slug": "thermoscribe-wildfire-evacuation-wind-planner",
+    "title": "ThermoScribe – Wildfire Evacuation Wind Planner",
+    "description": "Voor de ~80 miljoen mensen die in wildfire-risicogebieden wonen: een hyper-lokale, offline windpatroon & evacuatieroutelogger die realtime windrichting visueel combineert met opgeslagen persoonlijke vluchtroutes. Geen internet nodig, alles in localStorage.",
+    "tags": [
+      "claude-sonnet-4-6",
+      "wildfire",
+      "evacuation",
+      "wind-planning"
+    ],
+    "updatedAt": "2026-05-25T15:57:53.431Z"
   }
 ]
