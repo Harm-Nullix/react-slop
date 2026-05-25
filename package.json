@@ -1,5 +1,5 @@
 {
-  "name": "react-app",
+  "name": "tetrachroma-functional-tetrachromacy-isolator-calibration-matrix",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -68,5 +68,13 @@
     "postcss": "^8.5.15",
     "typescript": "5.7.3",
     "vite": "^8.0.12"
-  }
+  },
+  "title": "Tetrachroma: Functional Tetrachromacy Isolator & Calibration Matrix",
+  "description": "A high-precision visual calibration matrix built for the ~1% of the population with functional tetrachromacy (possessing a 4th cone receptor). It maps hyper-subtle variations in the yellow-green spectrum, mitigates digital-screen RGB compression fatigue, and exports optimized micro-spectral design palettes.",
+  "tags": [
+    "color-science",
+    "accessibility",
+    "design-interaction",
+    "gemini-3-flash-preview"
+  ]
 }
