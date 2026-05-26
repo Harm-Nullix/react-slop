@@ -249,14 +249,6 @@
     "updatedAt": "2026-05-22T14:16:18.622Z"
   },
   {
-    "name": "main",
-    "slug": "react-app",
-    "title": "react-app",
-    "description": "",
-    "tags": [],
-    "updatedAt": "2026-05-22T14:30:29.336Z"
-  },
-  {
     "name": "gen/2026/05/22/claude-opus-4-7/glaciergaze",
     "slug": "glaciergaze",
     "title": "GlacierGaze",
@@ -358,5 +350,13 @@
       "design-interaction"
     ],
     "updatedAt": "2026-05-26T07:40:24.475Z"
+  },
+  {
+    "name": "main",
+    "slug": "react-app",
+    "title": "react-app",
+    "description": "",
+    "tags": [],
+    "updatedAt": "2026-05-26T08:34:08.528Z"
   }
 ]
