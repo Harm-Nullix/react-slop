@@ -1,5 +1,5 @@
 {
-  "name": "react-app",
+  "name": "soporanchor-hypnagogic-transition-safeguard-reality-anchor",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -68,5 +68,14 @@
     "postcss": "^8.5.15",
     "typescript": "5.7.3",
     "vite": "^8.0.12"
-  }
+  },
+  "title": "SoporAnchor: Hypnagogic Transition Safeguard & Reality Anchor",
+  "description": "An exquisite neuro-sensory calibration app designed for the ~1% of individuals experiencing severe hypnagogic hallucinations and sleep paralysis. It dynamically synthesizes auditory and visual 'reality anchors' to stabilize conscious awareness during the sleep-onset transition.",
+  "tags": [
+    "gemini-3-flash-preview",
+    "health-tech",
+    "wellness",
+    "neurodiversity",
+    "design-interaction"
+  ]
 }
