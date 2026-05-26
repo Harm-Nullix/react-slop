@@ -345,5 +345,18 @@
       "accessibility"
     ],
     "updatedAt": "2026-05-26T07:38:12.002Z"
+  },
+  {
+    "name": "gen/2026/05/26/gemini-flash-latest/auraphase-dynamic-misophonia-phase-nullifier",
+    "slug": "auraphase-dynamic-misophonia-phase-nullifier",
+    "title": "AuraPhase - Dynamic Misophonia Phase-Nullifier",
+    "description": "A cutting-edge interactive Web Audio tool designed for the 1% of the world population with severe Misophonia or Hyperacusis. Dynamically maps environmental acoustic triggers and generates real-time phase-complementary micro-masking wave profiles.",
+    "tags": [
+      "gemini-3-flash-preview",
+      "neurodiversity",
+      "wellness",
+      "design-interaction"
+    ],
+    "updatedAt": "2026-05-26T07:40:24.475Z"
   }
 ]
