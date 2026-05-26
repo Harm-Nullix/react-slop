@@ -76,7 +76,9 @@ def run_git(args, cwd=None):
 
 def create_prompt(model):
     existing_apps = get_existing_apps()
-    existing_titles = ", ".join([a['title'] for a in existing_apps if a.get('title')])
+    existing_titles = ", ".join(
+        [f"{a['title']}: {a.get('description', '')[:60]}" for a in existing_apps if a.get('title')])
+
     existing_tags = ", ".join([", ".join(a['tags']) for a in existing_apps if a.get('tags')])
 
     with open(MASTER_PROMPT_FILE, 'r') as f:
