@@ -385,5 +385,18 @@
       "health-tech"
     ],
     "updatedAt": "2026-05-27T06:50:13.852Z"
+  },
+  {
+    "name": "gen/2026/05/27/gemini-flash-latest/myosync-micro-tremor-calibrator",
+    "slug": "myosync-micro-tremor-calibrator",
+    "title": "MyoSync // Micro-Tremor Calibrator",
+    "description": "A high-fidelity micro-tactile calibration matrix and respiratory pacer designed for microsurgeons, horologists, and micro-precision specialists to measure, analyze, and mitigate hand tremors.",
+    "tags": [
+      "neurodiversity",
+      "health-tech",
+      "design-interaction",
+      "gemini-3-flash-preview"
+    ],
+    "updatedAt": "2026-05-27T06:51:30.429Z"
   }
 ]
