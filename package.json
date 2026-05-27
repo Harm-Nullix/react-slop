@@ -1,5 +1,5 @@
 {
-  "name": "react-app",
+  "name": "thermovoice-vocal-cord-hydration-temperature-guardian",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -68,5 +68,13 @@
     "postcss": "^8.5.15",
     "typescript": "5.7.3",
     "vite": "^8.0.12"
-  }
+  },
+  "title": "ThermoVoice \u2013 Vocal Cord Hydration & Temperature Guardian",
+  "description": "Voor de ~80 miljoen professionele stemgebruikers wereldwijd (zangers, sprekers, docenten, voice-over artiesten) die hun stemgezondheid optimaliseren: een ultra-precisie app die vocale hydratatiebehoeften berekent op basis van omgevingstemperatuur, luchtvochtigheid, spreektijd en activiteitsniveau \u2014 met real-time aanbevelingen en stemherstelprotocollen.",
+  "tags": [
+    "voice-health",
+    "wellness",
+    "claude-sonnet-4-6",
+    "health-tech"
+  ]
 }
