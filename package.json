@@ -1,5 +1,5 @@
 {
-  "name": "react-app",
+  "name": "myosync-micro-tremor-calibrator",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -68,5 +68,13 @@
     "postcss": "^8.5.15",
     "typescript": "5.7.3",
     "vite": "^8.0.12"
-  }
+  },
+  "title": "MyoSync // Micro-Tremor Calibrator",
+  "description": "A high-fidelity micro-tactile calibration matrix and respiratory pacer designed for microsurgeons, horologists, and micro-precision specialists to measure, analyze, and mitigate hand tremors.",
+  "tags": [
+    "neurodiversity",
+    "health-tech",
+    "design-interaction",
+    "gemini-3-flash-preview"
+  ]
 }
