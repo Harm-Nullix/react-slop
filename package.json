@@ -1,5 +1,5 @@
 {
-  "name": "react-app",
+  "name": "pneumalog-freediver-breath-protocol-architect",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -68,5 +68,13 @@
     "postcss": "^8.5.15",
     "typescript": "5.7.3",
     "vite": "^8.0.12"
-  }
+  },
+  "title": "PneumaLog \u2013 Freediver Breath Protocol Architect",
+  "description": "Voor de ~80 miljoen mensen wereldwijd die freediving, apnea-training of pranayama beoefenen: een ultra-precisie adem-protocol architect die gepersonaliseerde CO\u2082/O\u2082-tolerantietabellen genereert, sessievoortgang bijhoudt en real-time adempatroon visualiseert \u2014 volledig offline, lokaal opgeslagen.",
+  "tags": [
+    "claude-sonnet-4-6",
+    "freediving",
+    "breath-training",
+    "health-tech"
+  ]
 }
