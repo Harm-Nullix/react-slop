@@ -398,5 +398,18 @@
       "gemini-3-flash-preview"
     ],
     "updatedAt": "2026-05-27T06:51:30.429Z"
+  },
+  {
+    "name": "gen/2026/05/28/claude-sonnet-4-6/pneumalog-freediver-breath-protocol-architect",
+    "slug": "pneumalog-freediver-breath-protocol-architect",
+    "title": "PneumaLog – Freediver Breath Protocol Architect",
+    "description": "Voor de ~80 miljoen mensen wereldwijd die freediving, apnea-training of pranayama beoefenen: een ultra-precisie adem-protocol architect die gepersonaliseerde CO₂/O₂-tolerantietabellen genereert, sessievoortgang bijhoudt en real-time adempatroon visualiseert — volledig offline, lokaal opgeslagen.",
+    "tags": [
+      "claude-sonnet-4-6",
+      "freediving",
+      "breath-training",
+      "health-tech"
+    ],
+    "updatedAt": "2026-05-28T09:51:47.509Z"
   }
 ]
