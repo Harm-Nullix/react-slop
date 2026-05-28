@@ -1,5 +1,5 @@
 {
-  "name": "react-app",
+  "name": "retinareset-photoreceptor-equilibrium-calibrator",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -68,5 +68,13 @@
     "postcss": "^8.5.15",
     "typescript": "5.7.3",
     "vite": "^8.0.12"
-  }
+  },
+  "title": "RetinaReset // Photoreceptor Equilibrium Calibrator",
+  "description": "An interactive sensory calibration matrix built for micro-surgeons, watchmakers, and precision micro-assembly technicians to counteract localized retinal photo-bleaching and chromatic afterimage fatigue using complementary wave-pulses and micro-saccadic eye tracking guides.",
+  "tags": [
+    "gemini-3-flash-preview",
+    "health-tech",
+    "design-interaction",
+    "accessibility"
+  ]
 }
