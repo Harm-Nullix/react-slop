@@ -1,5 +1,5 @@
 {
-  "name": "react-app",
+  "name": "osmotrack-hypertonic-athlete-salt-fluid-architect",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -68,5 +68,13 @@
     "postcss": "^8.5.15",
     "typescript": "5.7.3",
     "vite": "^8.0.12"
-  }
+  },
+  "title": "OsmoTrack \u2013 Hypertonic Athlete Salt & Fluid Architect",
+  "description": "Voor de ~80 miljoen duursporters, ultralopers en hitte-atleten wereldwijd die te maken hebben met hyponatri\u00ebmie (gevaarlijk lage zoutspiegels door overhydratie). OsmoTrack is de eerste precisie-tool die sweat-rate, sodium-verlies en rehydratieschema's personaliseert op basis van real-time trainingsdata \u2014 statisch, offline, opgeslagen in localStorage.",
+  "tags": [
+    "claude-sonnet-4-6",
+    "health-tech",
+    "endurance-sport",
+    "hydration"
+  ]
 }
