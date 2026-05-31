@@ -1,5 +1,5 @@
 {
-  "name": "react-app",
+  "name": "pneumasync-vocal-resonance-fatigue-tracker",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -68,5 +68,13 @@
     "postcss": "^8.5.15",
     "typescript": "5.7.3",
     "vite": "^8.0.12"
-  }
+  },
+  "title": "PneumaSync \u2013 Vocal Resonance Fatigue Tracker",
+  "description": "Voor de ~80 miljoen professionele glasblazers, koperblazers en wind-instrumentalisten wereldwijd die te maken hebben met lip- en mondspiervermoeidheid (embouchure fatigue): een real-time biofeedback-app die practice sessions logt, embouchure hersteltijden berekent en een gepersonaliseerd herstelprotocol biedt op basis van speelduur, intensiteit en rustpatronen.",
+  "tags": [
+    "claude-sonnet-4-6",
+    "health-tech",
+    "wellness",
+    "music"
+  ]
 }
