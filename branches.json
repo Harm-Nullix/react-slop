@@ -464,5 +464,18 @@
       "astronomy"
     ],
     "updatedAt": "2026-05-31T19:53:07.912Z"
+  },
+  {
+    "name": "gen/2026/06/01/claude-sonnet-4-6/thermohand-raynaud-s-attack-forecaster",
+    "slug": "thermohand-raynaud-s-attack-forecaster",
+    "title": "ThermoHand – Raynaud's Attack Forecaster",
+    "description": "Voor de ~80 miljoen mensen wereldwijd met het Raynaud-fenomeen: een hyper-gepersonaliseerde microklimaat-voorspeller die triggers monitort, aanvallen logt en real-time warmte-protocollen geeft op basis van weer, stress en activiteit.",
+    "tags": [
+      "claude-sonnet-4-6",
+      "health-tech",
+      "raynaud",
+      "wellness"
+    ],
+    "updatedAt": "2026-06-01T07:17:39.283Z"
   }
 ]
