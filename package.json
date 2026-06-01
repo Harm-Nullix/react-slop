@@ -1,5 +1,5 @@
 {
-  "name": "react-app",
+  "name": "thermohand-raynaud-s-attack-forecaster",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -68,5 +68,13 @@
     "postcss": "^8.5.15",
     "typescript": "5.7.3",
     "vite": "^8.0.12"
-  }
+  },
+  "title": "ThermoHand \u2013 Raynaud's Attack Forecaster",
+  "description": "Voor de ~80 miljoen mensen wereldwijd met het Raynaud-fenomeen: een hyper-gepersonaliseerde microklimaat-voorspeller die triggers monitort, aanvallen logt en real-time warmte-protocollen geeft op basis van weer, stress en activiteit.",
+  "tags": [
+    "claude-sonnet-4-6",
+    "health-tech",
+    "raynaud",
+    "wellness"
+  ]
 }
