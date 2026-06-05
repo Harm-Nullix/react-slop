@@ -1,5 +1,5 @@
 {
-  "name": "react-app",
+  "name": "tinnitusmapper-personalized-tinnitus-frequency-masking-journal",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -68,5 +68,13 @@
     "postcss": "^8.5.15",
     "typescript": "5.7.3",
     "vite": "^8.0.12"
-  }
+  },
+  "title": "TinnitusMapper \u2013 Personalized Tinnitus Frequency & Masking Journal",
+  "description": "Voor de ~80 miljoen mensen wereldwijd met chronisch tinnitus: een precisie-tool om je persoonlijke tinnitus-frequentie te mappen, masking-geluiden te testen via Web Audio API, en dagelijkse triggers bij te houden. Volledig statisch, offline-first, met localStorage persistentie.",
+  "tags": [
+    "claude-sonnet-4-6",
+    "health-tech",
+    "neurodiversity",
+    "wellness"
+  ]
 }
