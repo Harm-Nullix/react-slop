@@ -477,5 +477,18 @@
       "wellness"
     ],
     "updatedAt": "2026-06-01T07:17:39.283Z"
+  },
+  {
+    "name": "gen/2026/06/05/claude-sonnet-4-6/tinnitusmapper-personalized-tinnitus-frequency-masking-journal",
+    "slug": "tinnitusmapper-personalized-tinnitus-frequency-masking-journal",
+    "title": "TinnitusMapper – Personalized Tinnitus Frequency & Masking Journal",
+    "description": "Voor de ~80 miljoen mensen wereldwijd met chronisch tinnitus: een precisie-tool om je persoonlijke tinnitus-frequentie te mappen, masking-geluiden te testen via Web Audio API, en dagelijkse triggers bij te houden. Volledig statisch, offline-first, met localStorage persistentie.",
+    "tags": [
+      "claude-sonnet-4-6",
+      "health-tech",
+      "neurodiversity",
+      "wellness"
+    ],
+    "updatedAt": "2026-06-05T08:48:37.580Z"
   }
 ]
