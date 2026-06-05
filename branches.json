@@ -490,5 +490,18 @@
       "wellness"
     ],
     "updatedAt": "2026-06-05T08:48:37.580Z"
+  },
+  {
+    "name": "gen/2026/06/05/gemini-flash-latest/saccadesync-ocular-micro-drift-typographic-stabilizer",
+    "slug": "saccadesync-ocular-micro-drift-typographic-stabilizer",
+    "title": "SaccadeSync // Ocular Micro-Drift & Typographic Stabilizer",
+    "description": "An exquisite typographic micro-calibration and reading environment designed for the ~1% of the population experiencing ocular-motor tracking fatigue and micro-saccadic drift.",
+    "tags": [
+      "gemini-2.5-flash",
+      "neuro-ergonomics",
+      "accessibility",
+      "design-interaction"
+    ],
+    "updatedAt": "2026-06-05T11:09:42.386Z"
   }
 ]
