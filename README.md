@@ -2,6 +2,8 @@
 
 A repository full of experimental, spontaneous React applications—each living in its own branch.
 
+[Live deployments](https://harm-nullix.github.io/react-slop/)
+
 ## 🎯 Purpose
 
 This is a playground for building quick, creative React apps without the pressure of perfection. Each branch contains a standalone application designed to solve a niche problem or
